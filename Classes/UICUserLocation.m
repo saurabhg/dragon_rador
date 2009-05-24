@@ -44,6 +44,7 @@ CGFloat current_color[] = {0.0f, 51.0f/256.0f, 102.0f/256.0f, 1.0f};
    current_color[1] += (float)delta / MAX;
    current_color[2] += (float)delta / MAX;
 
+   self.center = CGPointMake(self.center.x + 1.0f, self.center.y + 1.0f);
    [self setNeedsDisplay];
 }
 
