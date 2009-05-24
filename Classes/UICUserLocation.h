@@ -24,4 +24,6 @@
 //@property (readonly, nonatomic, getter=isUpdating) BOOL updating;
 @property (nonatomic) CLLocationCoordinate2D coordinate;
 
+//- (void) updateLocation:(NSNumber *)latitude longitude:(NSNumber *)longitude;
+
 @end

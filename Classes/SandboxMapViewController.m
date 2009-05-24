@@ -29,6 +29,7 @@
    other_user_location.coordinate = coord;
    [self.view addSubview:other_user_location];
    [other_user_location release];
+   [self performSelectorInBackground:@selector(location_daemon) withObject:nil];
 }
 
 - (IBAction) showParticles
@@ -50,13 +51,24 @@
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
    CGPoint pt = [mapView convertCoordinate:other_user_location.coordinate toPointToView:nil];
-   other_user_location.center = pt;
+
+   [UIView beginAnimations:nil context:NULL]; {
+      [UIView setAnimationDuration:0.20f];
+      [UIView setAnimationDelegate:self];
+
+      other_user_location.center = pt;
+   } [UIView commitAnimations];
+   
 }
 
 - (IBAction) goHome
 {
-   MKCoordinateRegion my_home = {{35.697944f, 139.414398f}, {0.017914f, 0.018021f}};
+   const MKCoordinateRegion my_home = {{35.697944f, 139.414398f}, {0.017914f, 0.018021f}};
    [self.map_view setRegion:my_home];
+}
+
+- (void) location_daemon
+{
 }
 
 @end

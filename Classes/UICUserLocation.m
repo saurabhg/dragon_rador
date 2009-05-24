@@ -18,7 +18,7 @@ CGFloat current_color[] = {0.0f, 51.0f/256.0f, 102.0f/256.0f, 1.0f};
    if (self = [super initWithFrame:aRect]) {
       self.opaque = NO;
       self.alpha = 1.0f;
-      NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.06f target:self selector:@selector(move) userInfo:nil repeats:YES];
+      NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.06f target:self selector:@selector(animate_color) userInfo:nil repeats:YES];
    }
    return self;
 }
@@ -30,13 +30,11 @@ CGFloat current_color[] = {0.0f, 51.0f/256.0f, 102.0f/256.0f, 1.0f};
    [super dealloc];
 }
 
-- (void) move
+- (void) animate_color
 {
    static const int MAX = 20;
    static int delta = 1;
-   //NSLog(@"move coord = (%f, %f) center = (%f, %f), %p", self.coordinate.latitude, self.coordinate.longitude, self.center.x, self.center.y, self);
-//   self.location = [[CLLocation alloc] initWithLatitude:location.coordinate.latitude + 1.0f longitude:location.coordinate.longitude + 1.0f];
-//   self.frame = CGRectMake(self.frame.origin.x + 1.0f, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
+
    if (current_color[0] > 0.6f) {
       current_color[0] = initial_color[0];
       current_color[1] = initial_color[1];
@@ -45,6 +43,7 @@ CGFloat current_color[] = {0.0f, 51.0f/256.0f, 102.0f/256.0f, 1.0f};
    current_color[0] += (float)delta / MAX;
    current_color[1] += (float)delta / MAX;
    current_color[2] += (float)delta / MAX;
+
    [self setNeedsDisplay];
 }
 
@@ -60,11 +59,6 @@ CGFloat current_color[] = {0.0f, 51.0f/256.0f, 102.0f/256.0f, 1.0f};
    CGContextFillEllipseInRect(context, rect);   
    
    CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
-   /*
-   [user_name drawInRect:CGRectMake(8, 8, rect.size.width, rect.size.height)
-           withFont:[UIFont systemFontOfSize:12]
-      lineBreakMode:UILineBreakModeTailTruncation];
-    */
 }
 
 @end
