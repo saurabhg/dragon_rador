@@ -63,4 +63,10 @@ CGFloat current_color[] = {0.0f, 51.0f/256.0f, 102.0f/256.0f, 1.0f};
    CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
 }
 
+- (void) updateLocation:(CLLocation *)loc
+{
+   self.location = loc;
+   [self setNeedsDisplay];
+}
+
 @end

@@ -18,6 +18,7 @@
 
 @property (nonatomic, retain) MKMapView *map_view;
 
+- (IBAction) openSettings;
 - (IBAction) goHome;
 - (IBAction) moveOther;
 

@@ -21,5 +21,6 @@
 @property (nonatomic, retain) CLLocation *location;
 
 - (id) initWithFrame:(CGRect)frame location:(CLLocation *)loc;
+- (void) updateLocation:(CLLocation *)loc;
 
 @end
