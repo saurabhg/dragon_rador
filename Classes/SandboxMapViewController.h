@@ -18,7 +18,7 @@
 
 @property (nonatomic, retain) MKMapView *map_view;
 
-- (IBAction) showParticles;
 - (IBAction) goHome;
+- (IBAction) moveOther;
 
 @end

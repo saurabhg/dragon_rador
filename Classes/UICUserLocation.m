@@ -8,17 +8,18 @@
 #import "UICUserLocation.h"
 
 @implementation UICUserLocation
-@synthesize user_name, location, coordinate;
+@synthesize user_name, location;
 
 const CGFloat initial_color[] = {0.0f, 51.0f/256.0f, 102.0f/256.0f, 1.0f};
 CGFloat current_color[] = {0.0f, 51.0f/256.0f, 102.0f/256.0f, 1.0f};
 
-- (id)initWithFrame:(CGRect)aRect
+- (id)initWithFrame:(CGRect)aRect location:(CLLocation *) loc
 {
    if (self = [super initWithFrame:aRect]) {
       self.opaque = NO;
       self.alpha = 1.0f;
-      NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.06f target:self selector:@selector(animate_color) userInfo:nil repeats:YES];
+      self.location = loc;
+      //NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.06f target:self selector:@selector(animate_color) userInfo:nil repeats:YES];
    }
    return self;
 }

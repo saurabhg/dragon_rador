@@ -15,15 +15,11 @@
 {
    NSString *user_name;
    CLLocation *location;
-//   BOOL updating;
-   CLLocationCoordinate2D coordinate;
 }
 
 @property (nonatomic, retain) NSString *user_name;
 @property (nonatomic, retain) CLLocation *location;
-//@property (readonly, nonatomic, getter=isUpdating) BOOL updating;
-@property (nonatomic) CLLocationCoordinate2D coordinate;
 
-//- (void) updateLocation:(NSNumber *)latitude longitude:(NSNumber *)longitude;
+- (id) initWithFrame:(CGRect)frame location:(CLLocation *)loc;
 
 @end
