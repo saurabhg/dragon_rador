@@ -13,7 +13,7 @@
 @interface SandboxMapViewController : UIViewController <MKMapViewDelegate>
 {
    IBOutlet MKMapView *map_view;
-   UICUserLocation *other_user_location;
+   NSMutableArray *friends;
 }
 
 @property (nonatomic, retain) MKMapView *map_view;
@@ -21,5 +21,6 @@
 - (IBAction) openSettings;
 - (IBAction) goHome;
 - (IBAction) moveOther;
+- (IBAction) showFriends;
 
 @end

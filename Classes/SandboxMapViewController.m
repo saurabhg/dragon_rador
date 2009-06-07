@@ -10,13 +10,17 @@
 #import "UICUserLocation.h"
 #import "SettingViewController.h"
 
+@interface SandboxMapViewController (Private)
+- (void) setupNetwork;
+- (void) setupDummies;
+@end
+
 @implementation SandboxMapViewController
 @synthesize map_view;
 
 - (void) dealloc
 {
- 
-   [other_user_location release];
+   [friends release];
    [super dealloc];
 }
 
@@ -24,37 +28,39 @@
 {
    [super viewDidLoad];
    
-#define DEBUG
+   friends = [[NSMutableArray array] retain];
+   
    const MKCoordinateRegion initial_region = {
-#ifdef DEBUG
+#ifdef TARGET_IPHONE_SIMULATOR
       {35.697944f, 139.414398f},
-#else // DEBUG
+#else // TARGET_IPHONE_SIMULATOR
       {map_view.userLocation.location.coordinate.latitude, map_view.userLocation.location.coordinate.longitude},
-#endif // DEBUG
+#endif // TARGET_IPHONE_SIMULATOR
       {0.1f, 0.1f}};
    map_view.region = initial_region;
 
-   CLLocation *loc = [[CLLocation alloc] initWithLatitude:35.697944f longitude:139.414398f];
-   other_user_location = [[UICUserLocation alloc] initWithFrame:CGRectMake(32, 32, 16, 16) location:loc];
-   [loc release];
-   other_user_location.user_name = @"> <";
+   [self setupNetwork];
+   [self setupDummies];
    
-   [self.view addSubview:other_user_location];
-   [other_user_location release];
+   for (UICUserLocation *ul in friends) {      
+      [self.view addSubview:ul];      
+   }
 }
 
 - (void) updateAll
 {
-   CGPoint pt = [map_view convertCoordinate:other_user_location.location.coordinate toPointToView:nil];
-   
    [UIView beginAnimations:nil context:NULL]; {
       [UIView setAnimationDuration:0.20f];
       [UIView setAnimationDelegate:self];
-      
-      other_user_location.center = pt;
+
+      for (UICUserLocation *ul in friends) {
+         CGPoint pt = [map_view convertCoordinate:ul.location.coordinate toPointToView:nil];
+         ul.center = pt;
+      }
    } [UIView commitAnimations];
-      
 }
+
+#pragma mark MapKit delegates
 
 - (void)mapViewWillStartLoadingMap:(MKMapView *)mapView
 {
@@ -73,6 +79,8 @@
    [self updateAll];
 }
 
+#pragma mark IBActions
+
 - (IBAction) goHome
 {
    const MKCoordinateRegion my_home = {{35.697944f, 139.414398f}, {0.017914f, 0.018021f}};
@@ -81,12 +89,14 @@
 
 - (IBAction) moveOther
 {
+   /*
    CLLocation *cur = other_user_location.location;
    CLLocation *nxt = [[CLLocation alloc] initWithLatitude:cur.coordinate.latitude + 0.1f longitude:cur.coordinate.longitude + 0.1f];
    [other_user_location updateLocation:nxt];
    [nxt release];
    
    [self updateAll];
+   */
 }
 
 - (IBAction) openSettings
@@ -96,6 +106,26 @@
    [self presentModalViewController:nc animated:YES];
    [nc release];
    [svc release];
+}
+
+- (IBAction) showFriends
+{
+}
+
+#pragma mark Network
+
+- (void) setupNetwork
+{
+}
+
+- (void) setupDummies
+{
+   CLLocation *loc = [[CLLocation alloc] initWithLatitude:35.697944f longitude:139.414398f];
+   UICUserLocation *other_user_location = [[UICUserLocation alloc] initWithFrame:CGRectMake(32, 32, 16, 16) location:loc];
+   [loc release];
+   other_user_location.user_name = @"> <";
+   [friends addObject:other_user_location];
+   [other_user_location release];   
 }
 
 @end

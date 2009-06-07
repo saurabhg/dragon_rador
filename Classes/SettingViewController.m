@@ -27,6 +27,10 @@
 {
    [super viewDidLoad];
    self.title = @"Setting";
+   
+   UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)];
+   self.navigationItem.leftBarButtonItem = backButton;
+   [backButton release];
 }
 
 /*
@@ -50,10 +54,14 @@
 }
 
 
-- (void)dealloc {
+- (void) dealloc {
     [super dealloc];
 }
 
+- (void) done
+{
+   [self dismissModalViewControllerAnimated:YES];  
+}
 
 #pragma mark Table view methods
 
@@ -157,5 +165,14 @@
    }
    return nil;
 }
+
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
+{
+   if (section == 0) {
+      return @"We use your Twitter account information only for finding your friends.";
+   }
+   return nil;
+}
+
 
 @end
