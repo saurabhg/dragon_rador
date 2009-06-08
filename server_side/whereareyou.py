@@ -26,23 +26,67 @@ class MainPage(webapp.RequestHandler):
 
     # Write the submission form and the footer of the page
     self.response.out.write("""
-          <form action="/sign" method="post">
-            <div><textarea name="content" rows="3" cols="60"></textarea></div>
+          <form action="/register" method="post">
+            <div><textarea name="user_name" rows="1" cols="60"></textarea></div>
             <div><input type="submit" value="Sign Guestbook"></div>
           </form>
         </body>
       </html>""")
 
-class Guestbook(webapp.RequestHandler):
-  def post(self):
-    ctt = self.request.get('content')
-    user = User(name=ctt, location=ctt)
-    user.put()
-    self.redirect('/')
+class UserInfo(webapp.RequestHandler):
+   def get(self):
+      name = self.request.get('name')
+      users = db.GqlQuery("SELECT * FROM User WHERE name='%s' LIMIT 1" % name)
+      if users.count() == 0:
+         self.response.out.write('no user')
+         return
+
+      for user in users:
+         self.response.out.write('UserInfo: ')
+         self.response.out.write('name: %s ' % user.name)
+         self.response.out.write('location: %s ' % user.location)
+
+
+class Register(webapp.RequestHandler):
+   def post(self):
+      user_name = self.request.get('user_name')
+      # authorize it
+      # if successully authorized, register it as User
+      user = User(name=user_name)
+      user.put()
+      self.response.out.write('true')
+
+      # else return error
+      #self.response.out.write('false')
+
+class Updater(webapp.RequestHandler):
+   def get(self):
+    self.response.out.write("""
+          <form action="/update" method="post">
+            <div><label>user: </label><input name="name" /></div>
+            <div><input name="location" /></div>
+            <div><input type="submit" value="Sign Guestbook"></div>
+          </form>
+        </body>
+      </html>""")
+
+   def post(self):
+      name = self.request.get('name')
+      users = db.GqlQuery("SELECT * FROM User WHERE name='%s' LIMIT 1" % name)
+      if users.count() == 0:
+         self.response.out.write('no user')
+         return
+
+      for user in users:
+         user.location = self.request.get('location')
+         user.put()
+         self.response.out.write('updated')
 
 application = webapp.WSGIApplication(
                                      [('/', MainPage),
-                                      ('/sign', Guestbook)],
+                                      ('/user', UserInfo),
+                                      ('/update', Updater),
+                                      ('/register', Register)],
                                      debug=True)
 
 def main():
