@@ -35,6 +35,15 @@ class MainPage(webapp.RequestHandler):
 class UserInfo(webapp.RequestHandler):
    def get(self):
       name = self.request.get('name')
+      self.response.out.write(name)
+
+      if (name == ''):
+         self.response.out.write('<h1>All Users</h1>')
+         users = db.GqlQuery("SELECT * FROM User ORDER BY last_updated DESC LIMIT 10")
+         for user in users:
+            self.response.out.write('%s ' % user.name)
+         return
+
       users = db.GqlQuery("SELECT * FROM User WHERE name='%s' LIMIT 1" % name)
       if users.count() == 0:
          self.response.out.write('no user')
