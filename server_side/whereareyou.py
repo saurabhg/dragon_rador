@@ -17,8 +17,7 @@ class MainPage(webapp.RequestHandler):
 
     for user in users:
       if user.name:
-        #self.response.out.write('<b>%s</b> wrote:' % user.name())
-        self.response.out.write('<b>hoge</b> wrote:')
+        self.response.out.write('<b>%s</b> wrote:' % user.name)
       else:
         self.response.out.write('An anonymous person wrote:')
       self.response.out.write('<blockquote>%s</blockquote>' %
@@ -45,6 +44,7 @@ class UserInfo(webapp.RequestHandler):
          self.response.out.write('UserInfo: ')
          self.response.out.write('name: %s ' % user.name)
          self.response.out.write('location: %s ' % user.location)
+         self.response.out.write('last_updated: %s ' % user.last_updated)
 
 
 class Register(webapp.RequestHandler):
