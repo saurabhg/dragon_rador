@@ -10,6 +10,7 @@
 #import "UICUserLocation.h"
 #import "SettingViewController.h"
 #import "DragonRador.h"
+#import "FriendsPickViewController.h"
 
 @interface SandboxMapViewController (Private)
 - (void) setupNetwork;
@@ -30,7 +31,9 @@
 {
    [super viewDidLoad];
    
-   friends = [[NSMutableArray array] retain];
+   NSArray *saved_friends = [[NSUserDefaults standardUserDefaults] arrayForKey:DR_FRIENDS];
+   friends = saved_friends ? [NSMutableArray arrayWithArray:saved_friends] : [NSMutableArray array];
+   [friends retain];
    
    const MKCoordinateRegion initial_region = {
 #ifdef TARGET_IPHONE_SIMULATOR
@@ -113,8 +116,13 @@
    [svc release];
 }
 
-- (IBAction) showFriends
+- (IBAction) pickFriends
 {
+   FriendsPickViewController *fpvc = [[FriendsPickViewController alloc] initWithNibName:nil bundle:nil];
+   UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:fpvc];
+   [self presentModalViewController:nc animated:YES];
+   [nc release];
+   [fpvc release];
 }
 
 #pragma mark Network
@@ -132,8 +140,6 @@
    [friends addObject:other_user_location];
    [other_user_location release];   
 }
-
-#define LOCATION_SERVER @"http://dragon-rador.appspot.com"
 
 - (void) updateMyLocation
 {

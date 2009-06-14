@@ -22,7 +22,7 @@
 - (IBAction) openSettings;
 - (IBAction) goHome;
 - (IBAction) moveOther;
-- (IBAction) showFriends;
+- (IBAction) pickFriends;
 - (IBAction) showCurrentLocation;
 
 @end
