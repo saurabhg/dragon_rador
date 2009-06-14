@@ -7,7 +7,7 @@
 //
 
 #import "FriendsPickViewController.h"
-
+#import "DragonRador.h"
 
 @implementation FriendsPickViewController
 
@@ -26,6 +26,10 @@
    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)];
    self.navigationItem.leftBarButtonItem = backButton;
    [backButton release];
+
+   NSArray *saved_friends = [[NSUserDefaults standardUserDefaults] arrayForKey:DR_FRIENDS];
+   friends = saved_friends ? [NSMutableArray arrayWithArray:saved_friends] : [NSMutableArray array];
+   [friends retain];
 }
 
 /*
@@ -92,14 +96,16 @@
       cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
    }
 
+   cell.textLabel.text = @"mootoh_en";
+
    return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here. Create and push another view controller.
-	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
-	// [self.navigationController pushViewController:anotherViewController];
-	// [anotherViewController release];
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+   [friends addObject:@"mootoh_en"];
+   [[NSUserDefaults standardUserDefaults] setObject:friends forKey:DR_FRIENDS];
+   [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 
@@ -145,6 +151,7 @@
 
 - (void)dealloc
 {
+   [friends release];
    [super dealloc];
 }
 

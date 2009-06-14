@@ -8,6 +8,7 @@
 
 @interface FriendsPickViewController : UITableViewController
 {
+   NSMutableArray *friends;
 }
 
 @end

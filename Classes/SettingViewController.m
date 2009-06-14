@@ -34,9 +34,9 @@
    [backButton release];
 
    userField     = [[UITextField alloc] initWithFrame:CGRectMake(100, 11, 128, 22)];
-   NSString *user_id = [[NSUserDefaults standardUserDefaults] stringForKey:DR_TWITTER_USER];
-   if (user_id)
-      userField.text = user_id;
+   NSString *user_name = [[NSUserDefaults standardUserDefaults] stringForKey:DR_TWITTER_USER];
+   if (user_name)
+      userField.text = user_name;
 
    passwordField = [[UITextField alloc] initWithFrame:CGRectMake(100, 11, 128, 22)];
    passwordField.secureTextEntry = YES;
