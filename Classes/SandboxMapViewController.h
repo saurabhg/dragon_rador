@@ -10,10 +10,11 @@
 @protocol MKMapViewDelegate;
 @class MKMapView;
 
-@interface SandboxMapViewController : UIViewController <MKMapViewDelegate>
+@interface SandboxMapViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate>
 {
    IBOutlet MKMapView *map_view;
    NSMutableArray *friends;
+   CLLocationManager *location_manager;
 }
 
 @property (nonatomic, retain) MKMapView *map_view;
@@ -22,5 +23,7 @@
 - (IBAction) goHome;
 - (IBAction) moveOther;
 - (IBAction) showFriends;
+- (IBAction) updateMyLocation;
+- (IBAction) showCurrentLocation;
 
 @end
