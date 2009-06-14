@@ -23,7 +23,6 @@
 - (IBAction) goHome;
 - (IBAction) moveOther;
 - (IBAction) showFriends;
-- (IBAction) updateMyLocation;
 - (IBAction) showCurrentLocation;
 
 @end

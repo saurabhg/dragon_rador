@@ -9,6 +9,7 @@
 #import "SandboxMapViewController.h"
 #import "UICUserLocation.h"
 #import "SettingViewController.h"
+#import "DragonRador.h"
 
 @interface SandboxMapViewController (Private)
 - (void) setupNetwork;
@@ -134,30 +135,58 @@
 
 #define LOCATION_SERVER @"http://dragon-rador.appspot.com"
 
-- (IBAction) updateMyLocation
+- (void) updateMyLocation
 {
-   NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/update", LOCATION_SERVER]]];
+   NSDictionary *current_my_info = [[NSUserDefaults standardUserDefaults] dictionaryForKey:DR_MY_LOCATION];
+	// Timestamp
+	NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+	[dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+	[dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
+   NSDate *timestamp_date = [current_my_info objectForKey:@"timestamp"];
+   NSString *timestamp = [dateFormatter stringFromDate:timestamp_date];
+	
+   NSLog(@"lat=%f, long=%f, timestamp=%@",
+      [[current_my_info objectForKey:@"latitude"] floatValue],
+      [[current_my_info objectForKey:@"longitude"] floatValue],
+      timestamp);
+
+   NSString *post_str = [NSString stringWithFormat:@"name=%@&location=(%f,%f)&timestamp=%@",
+      [[NSUserDefaults standardUserDefaults] stringForKey:DR_TWITTER_USER],
+      [[current_my_info objectForKey:@"latitude"] floatValue],
+      [[current_my_info objectForKey:@"longitude"] floatValue],
+      timestamp];
+
+   NSData *post_data = [post_str dataUsingEncoding:NSASCIIStringEncoding];
+
+   NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/update", LOCATION_SERVER]]];
+   [req setHTTPMethod:@"POST"];
+   [req setHTTPBody:post_data];
+
+   NSURLResponse *res = nil;
+   NSError *err = nil;
+   [NSURLConnection sendSynchronousRequest:req returningResponse:&res error:&err];
+   if (err) {
+      NSLog(@"error: %@", [err localizedDescription]);
+   }
 }
+
+#pragma CLLocationManager
 
 - (IBAction) showCurrentLocation
 {
    [location_manager startUpdatingLocation];
 }
 
-#pragma CLLocationManagerDelegate
-
 // Called when the location is updated
 - (void)locationManager:(CLLocationManager *)manager
     didUpdateToLocation:(CLLocation *)newLocation
            fromLocation:(CLLocation *)oldLocation
 {
-	// Timestamp
-	NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
-	[dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-	[dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
-   NSString *timestamp = [dateFormatter stringFromDate:newLocation.timestamp];
-	
-   NSLog(@"lat=%f, long=%f, timestamp = %@", newLocation.coordinate.latitude, newLocation.coordinate.longitude, timestamp);
+   NSArray *keys = [NSArray arrayWithObjects:@"latitude", @"longitude", @"timestamp", nil];
+   NSArray *vals = [NSArray arrayWithObjects:[NSNumber numberWithFloat:newLocation.coordinate.latitude], [NSNumber numberWithFloat:newLocation.coordinate.longitude], newLocation.timestamp, nil];
+   NSDictionary *current_my_info = [NSDictionary dictionaryWithObjects:vals forKeys:keys];
+   [[NSUserDefaults standardUserDefaults] setObject:current_my_info forKey:DR_MY_LOCATION];
+   [self updateMyLocation];
 #if 0
 	// Horizontal coordinates
 	if (signbit(newLocation.horizontalAccuracy)) {

@@ -7,9 +7,7 @@
 //
 
 #import "SettingViewController.h"
-
-#define DR_TWITTER_USER @"userId"
-#define DR_TWITTER_PASSWORD @"password"
+#import "DragonRador.h"
 
 @implementation SettingViewController
 @synthesize table_view;
