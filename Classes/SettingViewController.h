@@ -9,6 +9,8 @@
 @interface SettingViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
    UITableView *table_view;
+   UITextField *userField;
+   UITextField *passwordField;
 }
 
 @property (nonatomic, retain) UITableView *table_view;

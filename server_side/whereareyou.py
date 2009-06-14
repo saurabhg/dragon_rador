@@ -20,8 +20,8 @@ class MainPage(webapp.RequestHandler):
         self.response.out.write('<b>%s</b> wrote:' % user.name)
       else:
         self.response.out.write('An anonymous person wrote:')
-      self.response.out.write('<blockquote>%s</blockquote>' %
-                              cgi.escape(user.name))
+
+      self.response.out.write('<blockquote>%s</blockquote>' % cgi.escape(user.name))
 
     # Write the submission form and the footer of the page
     self.response.out.write("""

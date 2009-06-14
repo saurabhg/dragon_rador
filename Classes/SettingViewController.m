@@ -8,6 +8,9 @@
 
 #import "SettingViewController.h"
 
+#define DR_TWITTER_USER @"userId"
+#define DR_TWITTER_PASSWORD @"password"
+
 @implementation SettingViewController
 @synthesize table_view;
 
@@ -31,6 +34,17 @@
    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)];
    self.navigationItem.leftBarButtonItem = backButton;
    [backButton release];
+
+   userField     = [[UITextField alloc] initWithFrame:CGRectMake(100, 11, 128, 22)];
+   NSString *user_id = [[NSUserDefaults standardUserDefaults] stringForKey:DR_TWITTER_USER];
+   if (user_id)
+      userField.text = user_id;
+
+   passwordField = [[UITextField alloc] initWithFrame:CGRectMake(100, 11, 128, 22)];
+   passwordField.secureTextEntry = YES;
+   NSString *password = [[NSUserDefaults standardUserDefaults] stringForKey:DR_TWITTER_PASSWORD];
+   if (password)
+      passwordField.text = password;
 }
 
 /*
@@ -54,8 +68,11 @@
 }
 
 
-- (void) dealloc {
-    [super dealloc];
+- (void) dealloc
+{
+   [userField release];
+   [passwordField release];
+   [super dealloc];
 }
 
 - (void) done
@@ -75,7 +92,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
    if (section == 0) {
-      return 2;
+      return 3;
    } else if (section == 1) {
       return 1;
    }
@@ -96,10 +113,27 @@
    // Set up the cell...
 	
    if (indexPath.section == 0) {
-      if (indexPath.row == 0) {
-         cell.textLabel.text = @"user name";
-      } else if (indexPath.row == 1) {
-         cell.textLabel.text = @"password";
+      CGRect cellFrame = cell.frame;
+
+      switch (indexPath.row) {
+         case 0:
+            cell.textLabel.text = @"Username";
+            [cell.contentView addSubview:userField];
+            break;
+         case 1:
+            cell.textLabel.text = @"Password";
+            [cell.contentView addSubview:passwordField];
+            break;
+         case 2: {
+            UIButton *commitUserInfoButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+            commitUserInfoButton.frame = CGRectMake(cellFrame.size.width/2-72/2, 2, 72, 40);
+            [commitUserInfoButton setTitle:@"OK" forState:UIControlStateNormal];
+            [commitUserInfoButton addTarget:self action:@selector(commitUserInfo) forControlEvents:UIControlEventTouchDown];
+            [cell.contentView addSubview:commitUserInfoButton];
+            break;
+         }
+         default:
+            break;
       }
    } else if (indexPath.section == 1) {
       cell.textLabel.text = @"Followers...";
@@ -174,5 +208,11 @@
    return nil;
 }
 
+- (void) commitUserInfo
+{
+   NSLog(@"commitUserInfo");
+   [[NSUserDefaults standardUserDefaults] setObject:userField.text forKey:DR_TWITTER_USER];
+   [[NSUserDefaults standardUserDefaults] setObject:passwordField.text forKey:DR_TWITTER_PASSWORD];
+}
 
 @end
