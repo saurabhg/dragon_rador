@@ -14,6 +14,7 @@
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		923F78830FE68222007620A2 /* MySelf.m in Sources */ = {isa = PBXBuildFile; fileRef = 923F78820FE68222007620A2 /* MySelf.m */; };
+		923F79040FE687EC007620A2 /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = 923F79030FE687EC007620A2 /* Friend.m */; };
 		927288F90FE4F66200547495 /* FriendsPickViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 927288F80FE4F66200547495 /* FriendsPickViewController.m */; };
 		927289240FE5309400547495 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 927289230FE5309400547495 /* Settings.bundle */; };
 		92B656EE0FDBD52B00F9BBC1 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B656EC0FDBD52B00F9BBC1 /* SettingViewController.m */; };
@@ -38,6 +39,8 @@
 		8D1107310486CEB800E47090 /* DragonRador-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DragonRador-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		923F78810FE68222007620A2 /* MySelf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySelf.h; sourceTree = "<group>"; };
 		923F78820FE68222007620A2 /* MySelf.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySelf.m; sourceTree = "<group>"; };
+		923F79020FE687EC007620A2 /* Friend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Friend.h; sourceTree = "<group>"; };
+		923F79030FE687EC007620A2 /* Friend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Friend.m; sourceTree = "<group>"; };
 		927288F70FE4F66200547495 /* FriendsPickViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsPickViewController.h; sourceTree = "<group>"; };
 		927288F80FE4F66200547495 /* FriendsPickViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsPickViewController.m; sourceTree = "<group>"; };
 		927289230FE5309400547495 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -84,6 +87,8 @@
 				927288F80FE4F66200547495 /* FriendsPickViewController.m */,
 				923F78810FE68222007620A2 /* MySelf.h */,
 				923F78820FE68222007620A2 /* MySelf.m */,
+				923F79020FE687EC007620A2 /* Friend.h */,
+				923F79030FE687EC007620A2 /* Friend.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -204,6 +209,7 @@
 				92B656EE0FDBD52B00F9BBC1 /* SettingViewController.m in Sources */,
 				927288F90FE4F66200547495 /* FriendsPickViewController.m in Sources */,
 				923F78830FE68222007620A2 /* MySelf.m in Sources */,
+				923F79040FE687EC007620A2 /* Friend.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

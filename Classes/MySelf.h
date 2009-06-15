@@ -6,12 +6,21 @@
 //  Copyright 2009 deadbeaf.org. All rights reserved.
 //
 
+@class Friend;
+
 @interface MySelf : NSObject
 {
    NSString *twitter_user_name;
    NSString *twitter_password;
 
-   NSMutableArray *friends;
+   NSMutableSet *friends;  // collection of Friend
+   BOOL visible;
 }
+
+- (void) toggleVisible;
+- (void) sendCurrentLocation;
+- (NSArray *) twitterFriends; // friends on Twitter
+- (void) addFriend:(Friend *)friend;
+- (void) removeFriend:(Friend *)friend;
 
 @end
