@@ -1,6 +1,6 @@
 //
 //  FriendsPickViewController.m
-//  MapSandbox
+//  DragonRador
 //
 //  Created by Motohiro Takayama on 6/14/09.
 //  Copyright 2009 deadbeaf.org. All rights reserved.
@@ -187,7 +187,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   [selected_friends addObject:@"mootoh_en"];
+   NSDictionary *user = [friends objectAtIndex:indexPath.row];
+   [selected_friends addObject:[user objectForKey:@"screen_name"]]; 
    [[NSUserDefaults standardUserDefaults] setObject:selected_friends forKey:DR_FRIENDS];
    [[NSUserDefaults standardUserDefaults] synchronize];
 }

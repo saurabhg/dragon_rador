@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D3623260D0F684500981E51 /* MapSandboxAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* MapSandboxAppDelegate.m */; };
+		1D3623260D0F684500981E51 /* DragonRadorAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* DragonRadorAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -19,23 +19,23 @@
 		92B656EE0FDBD52B00F9BBC1 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B656EC0FDBD52B00F9BBC1 /* SettingViewController.m */; };
 		92B656EF0FDBD52B00F9BBC1 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92B656ED0FDBD52B00F9BBC1 /* SettingViewController.xib */; };
 		B91AC0020FC9183E00A27181 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B91AC0010FC9183E00A27181 /* MapKit.framework */; };
-		B91AC01C0FC91EFD00A27181 /* SandboxMapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B91AC01B0FC91EFD00A27181 /* SandboxMapView.xib */; };
-		B91AC04F0FC920FC00A27181 /* SandboxMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B91AC04E0FC920FC00A27181 /* SandboxMapViewController.m */; };
+		B91AC01C0FC91EFD00A27181 /* DragonRadorMapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B91AC01B0FC91EFD00A27181 /* DragonRadorMapView.xib */; };
+		B91AC04F0FC920FC00A27181 /* DragonRadorMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B91AC04E0FC920FC00A27181 /* DragonRadorMapViewController.m */; };
 		B91AC0D20FC928B600A27181 /* UICUserLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = B91AC0D10FC928B600A27181 /* UICUserLocation.m */; };
 		B91AC20F0FC93EA000A27181 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B91AC20E0FC93EA000A27181 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		1D3623240D0F684500981E51 /* MapSandboxAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapSandboxAppDelegate.h; sourceTree = "<group>"; };
-		1D3623250D0F684500981E51 /* MapSandboxAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapSandboxAppDelegate.m; sourceTree = "<group>"; };
-		1D6058910D05DD3D006BFB54 /* MapSandbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapSandbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D3623240D0F684500981E51 /* DragonRadorAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragonRadorAppDelegate.h; sourceTree = "<group>"; };
+		1D3623250D0F684500981E51 /* DragonRadorAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DragonRadorAppDelegate.m; sourceTree = "<group>"; };
+		1D6058910D05DD3D006BFB54 /* DragonRador.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DragonRador.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		32CA4F630368D1EE00C91783 /* MapSandbox_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapSandbox_Prefix.pch; sourceTree = "<group>"; };
-		8D1107310486CEB800E47090 /* MapSandbox-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MapSandbox-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* DragonRador_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragonRador_Prefix.pch; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* DragonRador-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DragonRador-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		923F78810FE68222007620A2 /* MySelf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySelf.h; sourceTree = "<group>"; };
 		923F78820FE68222007620A2 /* MySelf.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySelf.m; sourceTree = "<group>"; };
 		927288F70FE4F66200547495 /* FriendsPickViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsPickViewController.h; sourceTree = "<group>"; };
@@ -45,9 +45,9 @@
 		92B656EC0FDBD52B00F9BBC1 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		92B656ED0FDBD52B00F9BBC1 /* SettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SettingViewController.xib; path = Classes/SettingViewController.xib; sourceTree = "<group>"; };
 		B91AC0010FC9183E00A27181 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		B91AC01B0FC91EFD00A27181 /* SandboxMapView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SandboxMapView.xib; sourceTree = "<group>"; };
-		B91AC04D0FC920FC00A27181 /* SandboxMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SandboxMapViewController.h; sourceTree = "<group>"; };
-		B91AC04E0FC920FC00A27181 /* SandboxMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SandboxMapViewController.m; sourceTree = "<group>"; };
+		B91AC01B0FC91EFD00A27181 /* DragonRadorMapView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DragonRadorMapView.xib; sourceTree = "<group>"; };
+		B91AC04D0FC920FC00A27181 /* DragonRadorMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragonRadorMapViewController.h; sourceTree = "<group>"; };
+		B91AC04E0FC920FC00A27181 /* DragonRadorMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DragonRadorMapViewController.m; sourceTree = "<group>"; };
 		B91AC0D00FC928B600A27181 /* UICUserLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICUserLocation.h; sourceTree = "<group>"; };
 		B91AC0D10FC928B600A27181 /* UICUserLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICUserLocation.m; sourceTree = "<group>"; };
 		B91AC20E0FC93EA000A27181 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -72,10 +72,10 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				1D3623240D0F684500981E51 /* MapSandboxAppDelegate.h */,
-				1D3623250D0F684500981E51 /* MapSandboxAppDelegate.m */,
-				B91AC04D0FC920FC00A27181 /* SandboxMapViewController.h */,
-				B91AC04E0FC920FC00A27181 /* SandboxMapViewController.m */,
+				1D3623240D0F684500981E51 /* DragonRadorAppDelegate.h */,
+				1D3623250D0F684500981E51 /* DragonRadorAppDelegate.m */,
+				B91AC04D0FC920FC00A27181 /* DragonRadorMapViewController.h */,
+				B91AC04E0FC920FC00A27181 /* DragonRadorMapViewController.m */,
 				B91AC0D00FC928B600A27181 /* UICUserLocation.h */,
 				B91AC0D10FC928B600A27181 /* UICUserLocation.m */,
 				92B656EB0FDBD52B00F9BBC1 /* SettingViewController.h */,
@@ -91,7 +91,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* MapSandbox.app */,
+				1D6058910D05DD3D006BFB54 /* DragonRador.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -111,7 +111,7 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				32CA4F630368D1EE00C91783 /* MapSandbox_Prefix.pch */,
+				32CA4F630368D1EE00C91783 /* DragonRador_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
 			name = "Other Sources";
@@ -121,9 +121,9 @@
 			isa = PBXGroup;
 			children = (
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
-				B91AC01B0FC91EFD00A27181 /* SandboxMapView.xib */,
+				B91AC01B0FC91EFD00A27181 /* DragonRadorMapView.xib */,
 				92B656ED0FDBD52B00F9BBC1 /* SettingViewController.xib */,
-				8D1107310486CEB800E47090 /* MapSandbox-Info.plist */,
+				8D1107310486CEB800E47090 /* DragonRador-Info.plist */,
 				927289230FE5309400547495 /* Settings.bundle */,
 			);
 			name = Resources;
@@ -144,9 +144,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1D6058900D05DD3D006BFB54 /* MapSandbox */ = {
+		1D6058900D05DD3D006BFB54 /* DragonRador */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "MapSandbox" */;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "DragonRador" */;
 			buildPhases = (
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
@@ -156,9 +156,9 @@
 			);
 			dependencies = (
 			);
-			name = MapSandbox;
+			name = DragonRador;
 			productName = MapSandbox;
-			productReference = 1D6058910D05DD3D006BFB54 /* MapSandbox.app */;
+			productReference = 1D6058910D05DD3D006BFB54 /* DragonRador.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -166,14 +166,14 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
-			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "MapSandbox" */;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "DragonRador" */;
 			compatibilityVersion = "Xcode 3.1";
 			hasScannedForEncodings = 1;
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1D6058900D05DD3D006BFB54 /* MapSandbox */,
+				1D6058900D05DD3D006BFB54 /* DragonRador */,
 			);
 		};
 /* End PBXProject section */
@@ -184,7 +184,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
-				B91AC01C0FC91EFD00A27181 /* SandboxMapView.xib in Resources */,
+				B91AC01C0FC91EFD00A27181 /* DragonRadorMapView.xib in Resources */,
 				92B656EF0FDBD52B00F9BBC1 /* SettingViewController.xib in Resources */,
 				927289240FE5309400547495 /* Settings.bundle in Resources */,
 			);
@@ -198,8 +198,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
-				1D3623260D0F684500981E51 /* MapSandboxAppDelegate.m in Sources */,
-				B91AC04F0FC920FC00A27181 /* SandboxMapViewController.m in Sources */,
+				1D3623260D0F684500981E51 /* DragonRadorAppDelegate.m in Sources */,
+				B91AC04F0FC920FC00A27181 /* DragonRadorMapViewController.m in Sources */,
 				B91AC0D20FC928B600A27181 /* UICUserLocation.m in Sources */,
 				92B656EE0FDBD52B00F9BBC1 /* SettingViewController.m in Sources */,
 				927288F90FE4F66200547495 /* FriendsPickViewController.m in Sources */,
@@ -218,9 +218,9 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = MapSandbox_Prefix.pch;
-				INFOPLIST_FILE = "MapSandbox-Info.plist";
-				PRODUCT_NAME = MapSandbox;
+				GCC_PREFIX_HEADER = DragonRador_Prefix.pch;
+				INFOPLIST_FILE = "DragonRador-Info.plist";
+				PRODUCT_NAME = DragonRador;
 			};
 			name = Debug;
 		};
@@ -230,9 +230,9 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = MapSandbox_Prefix.pch;
-				INFOPLIST_FILE = "MapSandbox-Info.plist";
-				PRODUCT_NAME = MapSandbox;
+				GCC_PREFIX_HEADER = DragonRador_Prefix.pch;
+				INFOPLIST_FILE = "DragonRador-Info.plist";
+				PRODUCT_NAME = DragonRador;
 			};
 			name = Release;
 		};
@@ -267,7 +267,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "MapSandbox" */ = {
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "DragonRador" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
@@ -276,7 +276,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "MapSandbox" */ = {
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "DragonRador" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,

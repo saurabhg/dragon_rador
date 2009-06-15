@@ -1,6 +1,6 @@
 //
-//  SandboxMapViewController.h
-//  MapSandbox
+//  DragonRadorMapViewController.h
+//  DragonRador
 //
 //  Created by mootoh on 5/24/09.
 //  Copyright 2009 deadbeaf.org. All rights reserved.
@@ -10,7 +10,7 @@
 @protocol MKMapViewDelegate;
 @class MKMapView;
 
-@interface SandboxMapViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate>
+@interface DragonRadorMapViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate>
 {
    IBOutlet MKMapView *map_view;
    NSMutableArray *friends;

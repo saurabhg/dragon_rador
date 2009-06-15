@@ -1,6 +1,6 @@
 //
 //  SettingViewController.m
-//  MapSandbox
+//  DragonRador
 //
 //  Created by Motohiro Takayama on 6/7/09.
 //  Copyright 2009 deadbeaf.org. All rights reserved.

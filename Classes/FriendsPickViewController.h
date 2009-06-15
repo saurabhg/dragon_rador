@@ -1,6 +1,6 @@
 //
 //  FriendsPickViewController.h
-//  MapSandbox
+//  DragonRador
 //
 //  Created by Motohiro Takayama on 6/14/09.
 //  Copyright 2009 deadbeaf.org. All rights reserved.

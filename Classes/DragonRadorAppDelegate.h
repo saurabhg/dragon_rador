@@ -1,17 +1,17 @@
 //
-//  MapSandboxAppDelegate.h
-//  MapSandbox
+//  DragonRadorAppDelegate.h
+//  DragonRador
 //
 //  Created by mootoh on 5/24/09.
 //  Copyright deadbeaf.org 2009. All rights reserved.
 //
 
-#import "SandboxMapViewController.h"
+#import "DragonRadorMapViewController.h"
 
-@interface MapSandboxAppDelegate : NSObject <UIApplicationDelegate>
+@interface DragonRadorAppDelegate : NSObject <UIApplicationDelegate>
 {
    UIWindow *window;
-   SandboxMapViewController *view_controller;
+   DragonRadorMapViewController *view_controller;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;

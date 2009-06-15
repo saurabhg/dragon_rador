@@ -1,6 +1,6 @@
 //
 //  UICUserLocation.h
-//  MapSandbox
+//  DragonRador
 //
 //  Created by mootoh on 5/24/09.
 //  Copyright 2009 deadbeaf.org. All rights reserved.

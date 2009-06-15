@@ -1,19 +1,19 @@
 //
-//  MapSandboxAppDelegate.m
-//  MapSandbox
+//  DragonRadorAppDelegate.m
+//  DragonRador
 //
 //  Created by mootoh on 5/24/09.
 //  Copyright deadbeaf.org 2009. All rights reserved.
 //
-#import "MapSandboxAppDelegate.h"
+#import "DragonRadorAppDelegate.h"
 
-@implementation MapSandboxAppDelegate
+@implementation DragonRadorAppDelegate
 
 @synthesize window, view_controller;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application
 {
-   view_controller = [[SandboxMapViewController alloc] initWithNibName:@"SandboxMapView" bundle:nil];
+   view_controller = [[DragonRadorMapViewController alloc] initWithNibName:@"DragonRadorMapView" bundle:nil];
    [window addSubview:view_controller.view];
    [window makeKeyAndVisible];
 }

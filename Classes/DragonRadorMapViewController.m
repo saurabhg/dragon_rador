@@ -1,23 +1,23 @@
 //
-//  SandboxMapViewController.m
-//  MapSandbox
+//  DragonRadorMapViewController.m
+//  DragonRador
 //
 //  Created by mootoh on 5/24/09.
 //  Copyright 2009 deadbeaf.org. All rights reserved.
 //
 #import <MapKit/MapKit.h>
-#import "SandboxMapViewController.h"
+#import "DragonRadorMapViewController.h"
 #import "UICUserLocation.h"
 #import "SettingViewController.h"
 #import "DragonRador.h"
 #import "FriendsPickViewController.h"
 
-@interface SandboxMapViewController (Private)
+@interface DragonRadorMapViewController (Private)
 - (void) setupNetwork;
 - (void) setupDummies;
 @end
 
-@implementation SandboxMapViewController
+@implementation DragonRadorMapViewController
 @synthesize map_view;
 
 - (void) dealloc
