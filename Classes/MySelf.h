@@ -8,7 +8,7 @@
 
 @class Friend;
 
-@interface MySelf : NSObject
+@interface MySelf : NSObject <NSCoding>
 {
    NSString *twitter_user_name;
    NSString *twitter_password;
