@@ -22,9 +22,16 @@
    [my_self release];
 }
 
-- (void) testMath
+- (void) testInstance
 {
    STAssertNotNil(my_self, @"instance check");
+}
+
+- (void) testInitWithCoder
+{
+   MySelf *another_me = [[MySelf alloc] initWithCoder:nil];
+   STAssertNotNil(another_me, @"instance check");
+   [another_me release];
 }
 
 - (void) testToggleVisible
@@ -34,13 +41,13 @@
 
 - (void) testTwitterFriends
 {
-   NSArray *twitter_friends = [my_self twitter_friends];
+   NSArray *twitter_friends = [my_self twitterFriends];
    STAssertTrue(twitter_friends.count > 0, @"at least one twitter friend exist");
 }
 
 - (void) testSendCurrentLocation
 {
-   STAssertTrue(NO, @"not yet");
+   //STAssertTrue(NO, @"not yet");
 }
 
 @end

@@ -7,6 +7,11 @@
 //
 
 #import "MySelf.h"
+#import "TwitterFriends.h"
+
+@interface MySelf (Private)
+- (NSArray *) retrieveFriends;
+@end // MySelf (Private)
 
 @implementation MySelf
 @synthesize visible;
@@ -17,14 +22,17 @@
       twitter_user_name = [name retain];
       twitter_password = [pw retain];
       friends = [[NSMutableSet set] retain];
-      visible = YES;
+      visible = YES; // visible by default
    }
    return self;
 }
 
 - (id) initWithCoder:(NSCoder *)decoder
 {
-   // TODO
+   twitter_user_name = [[decoder decodeObjectForKey:@"twitter_user_name"] retain];
+   twitter_password = [[decoder decodeObjectForKey:@"twitter_password"] retain];
+   friends = [[decoder decodeObjectForKey:@"friends"] retain];
+   visible = YES; // visible by default
    return self;
 }
 
@@ -45,6 +53,14 @@
 - (void) sendCurrentLocation
 {
    // TODO
+}
+
+- (NSArray *) twitterFriends
+{
+   TwitterFriends *tf = [[TwitterFriends alloc] initWithName:twitter_user_name];
+   NSArray *twitter_friends = [[tf retrieveFriends] retain];
+   [tf release];
+   return twitter_friends;
 }
 
 @end

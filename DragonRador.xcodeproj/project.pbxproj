@@ -23,6 +23,8 @@
 		92964AD80FE6FF9500F7E8FC /* MySelfTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 92964AD70FE6FF9500F7E8FC /* MySelfTest.m */; };
 		92B656EE0FDBD52B00F9BBC1 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B656EC0FDBD52B00F9BBC1 /* SettingViewController.m */; };
 		92B656EF0FDBD52B00F9BBC1 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92B656ED0FDBD52B00F9BBC1 /* SettingViewController.xib */; };
+		92E125F80FE707CB00736385 /* TwitterFriends.m in Sources */ = {isa = PBXBuildFile; fileRef = 92E125F70FE707CB00736385 /* TwitterFriends.m */; };
+		92E125F90FE707CB00736385 /* TwitterFriends.m in Sources */ = {isa = PBXBuildFile; fileRef = 92E125F70FE707CB00736385 /* TwitterFriends.m */; };
 		B91AC0020FC9183E00A27181 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B91AC0010FC9183E00A27181 /* MapKit.framework */; };
 		B91AC01C0FC91EFD00A27181 /* DragonRadorMapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B91AC01B0FC91EFD00A27181 /* DragonRadorMapView.xib */; };
 		B91AC04F0FC920FC00A27181 /* DragonRadorMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B91AC04E0FC920FC00A27181 /* DragonRadorMapViewController.m */; };
@@ -55,6 +57,8 @@
 		92B656EB0FDBD52B00F9BBC1 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		92B656EC0FDBD52B00F9BBC1 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		92B656ED0FDBD52B00F9BBC1 /* SettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SettingViewController.xib; path = Classes/SettingViewController.xib; sourceTree = "<group>"; };
+		92E125F60FE707CB00736385 /* TwitterFriends.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterFriends.h; sourceTree = "<group>"; };
+		92E125F70FE707CB00736385 /* TwitterFriends.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterFriends.m; sourceTree = "<group>"; };
 		B91AC0010FC9183E00A27181 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		B91AC01B0FC91EFD00A27181 /* DragonRadorMapView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DragonRadorMapView.xib; sourceTree = "<group>"; };
 		B91AC04D0FC920FC00A27181 /* DragonRadorMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragonRadorMapViewController.h; sourceTree = "<group>"; };
@@ -105,6 +109,8 @@
 				923F78820FE68222007620A2 /* MySelf.m */,
 				923F79020FE687EC007620A2 /* Friend.h */,
 				923F79030FE687EC007620A2 /* Friend.m */,
+				92E125F60FE707CB00736385 /* TwitterFriends.h */,
+				92E125F70FE707CB00736385 /* TwitterFriends.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -283,6 +289,7 @@
 				927288F90FE4F66200547495 /* FriendsPickViewController.m in Sources */,
 				923F78830FE68222007620A2 /* MySelf.m in Sources */,
 				923F79040FE687EC007620A2 /* Friend.m in Sources */,
+				92E125F90FE707CB00736385 /* TwitterFriends.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +300,7 @@
 				92964ABC0FE6FE1400F7E8FC /* Friend.m in Sources */,
 				92964ACD0FE6FF2B00F7E8FC /* MySelf.m in Sources */,
 				92964AD80FE6FF9500F7E8FC /* MySelfTest.m in Sources */,
+				92E125F80FE707CB00736385 /* TwitterFriends.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
