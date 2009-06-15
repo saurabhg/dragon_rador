@@ -13,6 +13,7 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		923F78830FE68222007620A2 /* MySelf.m in Sources */ = {isa = PBXBuildFile; fileRef = 923F78820FE68222007620A2 /* MySelf.m */; };
 		927288F90FE4F66200547495 /* FriendsPickViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 927288F80FE4F66200547495 /* FriendsPickViewController.m */; };
 		927289240FE5309400547495 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 927289230FE5309400547495 /* Settings.bundle */; };
 		92B656EE0FDBD52B00F9BBC1 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B656EC0FDBD52B00F9BBC1 /* SettingViewController.m */; };
@@ -35,6 +36,8 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* MapSandbox_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapSandbox_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* MapSandbox-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MapSandbox-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		923F78810FE68222007620A2 /* MySelf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySelf.h; sourceTree = "<group>"; };
+		923F78820FE68222007620A2 /* MySelf.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySelf.m; sourceTree = "<group>"; };
 		927288F70FE4F66200547495 /* FriendsPickViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsPickViewController.h; sourceTree = "<group>"; };
 		927288F80FE4F66200547495 /* FriendsPickViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsPickViewController.m; sourceTree = "<group>"; };
 		927289230FE5309400547495 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -79,6 +82,8 @@
 				92B656EC0FDBD52B00F9BBC1 /* SettingViewController.m */,
 				927288F70FE4F66200547495 /* FriendsPickViewController.h */,
 				927288F80FE4F66200547495 /* FriendsPickViewController.m */,
+				923F78810FE68222007620A2 /* MySelf.h */,
+				923F78820FE68222007620A2 /* MySelf.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -198,6 +203,7 @@
 				B91AC0D20FC928B600A27181 /* UICUserLocation.m in Sources */,
 				92B656EE0FDBD52B00F9BBC1 /* SettingViewController.m in Sources */,
 				927288F90FE4F66200547495 /* FriendsPickViewController.m in Sources */,
+				923F78830FE68222007620A2 /* MySelf.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
