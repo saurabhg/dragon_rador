@@ -9,8 +9,121 @@
 #import "FriendsPickViewController.h"
 #import "DragonRador.h"
 
+#pragma mark TwitterFriends
+
+@interface TwitterFriends : NSObject
+{
+   enum state_t {
+      STATE_NULL,
+      STATE_ID,
+      STATE_SCREEN_NAME,
+      STATE_IMAGE
+   } state;
+
+   NSString *me;
+   NSMutableArray *friends;
+   NSMutableDictionary *friend;
+}
+
+@end // TwitterFriends
+
+@implementation TwitterFriends
+
+- (id) init:(NSString *)name
+{
+   if (self = [super init]) {
+      state = STATE_NULL;
+      me = [name retain];
+      friends = [[NSMutableArray alloc] init];
+   }
+   return self;
+}
+
+- (void) dealloc
+{
+   [friends release];
+   [me release];
+   [super dealloc];
+}
+
+- (NSArray *) retrieveFriends
+{
+   NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://twitter.com/statuses/friends/%@.xml", me]];
+   NSXMLParser *parser = [[[NSXMLParser alloc] initWithContentsOfURL:url] autorelease];
+   parser.delegate = self;
+   if (! [parser parse]) {
+      return nil;
+   }
+   return friends;
+}
+
+- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict
+{
+   if ([elementName isEqualToString:@"user"]) {
+      NSAssert(state == STATE_NULL, @"check state");
+      friend = [[NSMutableDictionary alloc] init];
+   } else if ([elementName isEqualToString:@"id"]) {
+      state = STATE_ID;
+   } else if ([elementName isEqualToString:@"screen_name"]) {
+      state = STATE_SCREEN_NAME;
+   } else if ([elementName isEqualToString:@"profile_image_url"]) {
+      state = STATE_IMAGE;
+   }
+}
+
+- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
+{
+   if ([elementName isEqualToString:@"user"]) {
+      [friends addObject:friend];
+      [friend release];
+   }
+   state = STATE_NULL;
+}
+
+- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)chars
+{
+   switch (state) {
+      case STATE_ID:
+         [friend setObject:chars forKey:@"id"];
+         break;
+      case STATE_SCREEN_NAME:
+         [friend setObject:chars forKey:@"screen_name"];
+         break;
+      case STATE_IMAGE:
+         [friend setObject:chars forKey:@"image_url"];
+         break;
+      default:
+         break;
+   }
+}
+
+- (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError
+{
+   NSLog(@"error occurred: %@", [parseError localizedDescription]);
+}
+
+@end // TwitterFriends
+
+#pragma mark FriendsPickViewController
+
 @implementation FriendsPickViewController
 
+- (UIImage *) getIcon:(NSDictionary *)user
+{
+   NSURL *url = [NSURL URLWithString:[user objectForKey:@"image_url"]];
+
+   NSURLRequest *req = [NSURLRequest requestWithURL:url];
+   NSURLResponse *res = nil;
+   NSError *err = nil;
+   NSData *data = [NSURLConnection sendSynchronousRequest:req returningResponse:&res error:&err];
+   if (err) {
+      NSLog(@"error: %@", [err localizedDescription]);
+   }
+   UIImage *img = [UIImage imageWithData:data];
+   return [img retain];
+}
+
+#pragma mark ViewController
 /*
 - (id)initWithStyle:(UITableViewStyle)style {
     // Override initWithStyle: if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -28,63 +141,30 @@
    [backButton release];
 
    NSArray *saved_friends = [[NSUserDefaults standardUserDefaults] arrayForKey:DR_FRIENDS];
-   friends = saved_friends ? [NSMutableArray arrayWithArray:saved_friends] : [NSMutableArray array];
-   [friends retain];
+   selected_friends = saved_friends ? [NSMutableArray arrayWithArray:saved_friends] : [NSMutableArray array];
+   [selected_friends retain];
+
+   TwitterFriends *tf = [[TwitterFriends alloc] init:[[NSUserDefaults standardUserDefaults] stringForKey:DR_TWITTER_USER]];
+   friends = [[tf retrieveFriends] retain];
+   [tf release];
 }
 
-/*
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-}
-*/
-/*
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-}
-*/
-/*
-- (void)viewWillDisappear:(BOOL)animated {
-	[super viewWillDisappear:animated];
-}
-*/
-/*
-- (void)viewDidDisappear:(BOOL)animated {
-	[super viewDidDisappear:animated];
-}
-*/
-
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
-
-- (void)didReceiveMemoryWarning {
-	// Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-	
-	// Release any cached data, images, etc that aren't in use.
-}
-
-- (void)viewDidUnload
+- (void)didReceiveMemoryWarning
 {
+   [super didReceiveMemoryWarning];
 }
-
 
 #pragma mark Table view methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+   return 1;
 }
-
 
 // Customize the number of rows in the table view.
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+   return friends.count;
 }
-
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -96,15 +176,17 @@
       cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
    }
 
-   cell.textLabel.text = @"mootoh_en";
-
+   NSDictionary *user = [friends objectAtIndex:indexPath.row];
+   UIImage *img = [self getIcon:user];
+   cell.imageView.image = img;
+   cell.textLabel.text = [user objectForKey:@"screen_name"];
    return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   [friends addObject:@"mootoh_en"];
-   [[NSUserDefaults standardUserDefaults] setObject:friends forKey:DR_FRIENDS];
+   [selected_friends addObject:@"mootoh_en"];
+   [[NSUserDefaults standardUserDefaults] setObject:selected_friends forKey:DR_FRIENDS];
    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
