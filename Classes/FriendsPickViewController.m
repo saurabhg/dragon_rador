@@ -144,6 +144,8 @@
    selected_friends = saved_friends ? [NSMutableArray arrayWithArray:saved_friends] : [NSMutableArray array];
    [selected_friends retain];
 
+   NSLog(@"saved friends are %@", saved_friends);
+
    TwitterFriends *tf = [[TwitterFriends alloc] init:[[NSUserDefaults standardUserDefaults] stringForKey:DR_TWITTER_USER]];
    friends = [[tf retrieveFriends] retain];
    [tf release];

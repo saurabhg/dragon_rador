@@ -134,7 +134,7 @@
             break;
       }
    } else if (indexPath.section == 1) {
-      cell.textLabel.text = @"Followers...";
+      cell.textLabel.text = @"Reset";
    }
    
    return cell;
@@ -142,6 +142,12 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+   if (indexPath.section == 1) {
+      [[NSUserDefaults standardUserDefaults] removeObjectForKey:DR_MY_LOCATION];
+      [[NSUserDefaults standardUserDefaults] removeObjectForKey:DR_FRIENDS];
+      [[NSUserDefaults standardUserDefaults] removeObjectForKey:DR_TWITTER_USER];
+      [[NSUserDefaults standardUserDefaults] removeObjectForKey:DR_TWITTER_PASSWORD];
+   }
    // Navigation logic may go here. Create and push another view controller.
 	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
 	// [self.navigationController pushViewController:anotherViewController];
