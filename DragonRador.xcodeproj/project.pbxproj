@@ -17,6 +17,10 @@
 		923F79040FE687EC007620A2 /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = 923F79030FE687EC007620A2 /* Friend.m */; };
 		927288F90FE4F66200547495 /* FriendsPickViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 927288F80FE4F66200547495 /* FriendsPickViewController.m */; };
 		927289240FE5309400547495 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 927289230FE5309400547495 /* Settings.bundle */; };
+		92964ABC0FE6FE1400F7E8FC /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = 923F79030FE687EC007620A2 /* Friend.m */; };
+		92964ABE0FE6FE2200F7E8FC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		92964ACD0FE6FF2B00F7E8FC /* MySelf.m in Sources */ = {isa = PBXBuildFile; fileRef = 923F78820FE68222007620A2 /* MySelf.m */; };
+		92964AD80FE6FF9500F7E8FC /* MySelfTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 92964AD70FE6FF9500F7E8FC /* MySelfTest.m */; };
 		92B656EE0FDBD52B00F9BBC1 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B656EC0FDBD52B00F9BBC1 /* SettingViewController.m */; };
 		92B656EF0FDBD52B00F9BBC1 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92B656ED0FDBD52B00F9BBC1 /* SettingViewController.xib */; };
 		B91AC0020FC9183E00A27181 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B91AC0010FC9183E00A27181 /* MapKit.framework */; };
@@ -44,6 +48,10 @@
 		927288F70FE4F66200547495 /* FriendsPickViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsPickViewController.h; sourceTree = "<group>"; };
 		927288F80FE4F66200547495 /* FriendsPickViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsPickViewController.m; sourceTree = "<group>"; };
 		927289230FE5309400547495 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		92964AB30FE6FD8900F7E8FC /* UnitTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		92964AB40FE6FD8900F7E8FC /* UnitTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTest-Info.plist"; sourceTree = "<group>"; };
+		92964AD60FE6FF9500F7E8FC /* MySelfTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MySelfTest.h; path = test/MySelfTest.h; sourceTree = "<group>"; };
+		92964AD70FE6FF9500F7E8FC /* MySelfTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MySelfTest.m; path = test/MySelfTest.m; sourceTree = "<group>"; };
 		92B656EB0FDBD52B00F9BBC1 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		92B656EC0FDBD52B00F9BBC1 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		92B656ED0FDBD52B00F9BBC1 /* SettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SettingViewController.xib; path = Classes/SettingViewController.xib; sourceTree = "<group>"; };
@@ -66,6 +74,14 @@
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				B91AC0020FC9183E00A27181 /* MapKit.framework in Frameworks */,
 				B91AC20F0FC93EA000A27181 /* CoreLocation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92964AB00FE6FD8900F7E8FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92964ABE0FE6FE2200F7E8FC /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				1D6058910D05DD3D006BFB54 /* DragonRador.app */,
+				92964AB30FE6FD8900F7E8FC /* UnitTest.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -109,6 +126,7 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				92964AD30FE6FF4400F7E8FC /* Tests */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -146,6 +164,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		92964AD30FE6FF4400F7E8FC /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				92964AB40FE6FD8900F7E8FC /* UnitTest-Info.plist */,
+				92964AD60FE6FF9500F7E8FC /* MySelfTest.h */,
+				92964AD70FE6FF9500F7E8FC /* MySelfTest.m */,
+			);
+			name = Tests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -166,11 +194,32 @@
 			productReference = 1D6058910D05DD3D006BFB54 /* DragonRador.app */;
 			productType = "com.apple.product-type.application";
 		};
+		92964AB20FE6FD8900F7E8FC /* UnitTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 92964AB70FE6FD8B00F7E8FC /* Build configuration list for PBXNativeTarget "UnitTest" */;
+			buildPhases = (
+				92964AAE0FE6FD8900F7E8FC /* Resources */,
+				92964AAF0FE6FD8900F7E8FC /* Sources */,
+				92964AB00FE6FD8900F7E8FC /* Frameworks */,
+				92964AB10FE6FD8900F7E8FC /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UnitTest;
+			productName = UnitTest;
+			productReference = 92964AB30FE6FD8900F7E8FC /* UnitTest.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "DragonRador" */;
 			compatibilityVersion = "Xcode 3.1";
 			hasScannedForEncodings = 1;
@@ -179,6 +228,7 @@
 			projectRoot = "";
 			targets = (
 				1D6058900D05DD3D006BFB54 /* DragonRador */,
+				92964AB20FE6FD8900F7E8FC /* UnitTest */,
 			);
 		};
 /* End PBXProject section */
@@ -195,7 +245,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		92964AAE0FE6FD8900F7E8FC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		92964AB10FE6FD8900F7E8FC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1D60588E0D05DD3D006BFB54 /* Sources */ = {
@@ -210,6 +283,16 @@
 				927288F90FE4F66200547495 /* FriendsPickViewController.m in Sources */,
 				923F78830FE68222007620A2 /* MySelf.m in Sources */,
 				923F79040FE687EC007620A2 /* Friend.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92964AAF0FE6FD8900F7E8FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92964ABC0FE6FE1400F7E8FC /* Friend.m in Sources */,
+				92964ACD0FE6FF2B00F7E8FC /* MySelf.m in Sources */,
+				92964AD80FE6FF9500F7E8FC /* MySelfTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +324,112 @@
 				PRODUCT_NAME = DragonRador;
 			};
 			name = Release;
+		};
+		92964AB50FE6FD8A00F7E8FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INFOPLIST_FILE = "UnitTest-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					SenTestingKit,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = UnitTest;
+				SDKROOT = "";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		92964AB60FE6FD8A00F7E8FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				INFOPLIST_FILE = "UnitTest-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					SenTestingKit,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = UnitTest;
+				SDKROOT = "";
+				WRAPPER_EXTENSION = octest;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		92964AC20FE6FE4700F7E8FC /* Test */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Don't Code Sign";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				SDKROOT = "";
+			};
+			name = Test;
+		};
+		92964AC30FE6FE4700F7E8FC /* Test */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = DragonRador_Prefix.pch;
+				INFOPLIST_FILE = "DragonRador-Info.plist";
+				PRODUCT_NAME = DragonRador;
+			};
+			name = Test;
+		};
+		92964AC40FE6FE4700F7E8FC /* Test */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INFOPLIST_FILE = "UnitTest-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					SenTestingKit,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = UnitTest;
+				SDKROOT = "";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Test;
 		};
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -278,6 +467,17 @@
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
 				1D6058950D05DD3E006BFB54 /* Release */,
+				92964AC30FE6FE4700F7E8FC /* Test */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		92964AB70FE6FD8B00F7E8FC /* Build configuration list for PBXNativeTarget "UnitTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				92964AB50FE6FD8A00F7E8FC /* Debug */,
+				92964AB60FE6FD8A00F7E8FC /* Release */,
+				92964AC40FE6FE4700F7E8FC /* Test */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -287,6 +487,7 @@
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
 				C01FCF5008A954540054247B /* Release */,
+				92964AC20FE6FE4700F7E8FC /* Test */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

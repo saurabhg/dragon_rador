@@ -6,6 +6,8 @@
 //  Copyright 2009 deadbeaf.org. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
+
 @class Friend;
 
 @interface MySelf : NSObject <NSCoding>
@@ -16,6 +18,8 @@
    NSMutableSet *friends;  // collection of Friend
    BOOL visible;
 }
+
+- (id) initWithName:(NSString *)name password:(NSString *)pw;
 
 - (void) toggleVisible;
 - (void) sendCurrentLocation;

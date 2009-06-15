@@ -6,7 +6,10 @@
 //  Copyright 2009 deadbeaf.org. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
+
 @class CLLocation;
+@class UIImage;
 
 @interface Friend : NSObject
 {
