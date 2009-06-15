@@ -37,12 +37,17 @@
 - (void) testToggleVisible
 {
    STAssertTrue(my_self.visible, @"default is visible");
+   [my_self toggleVisible];
+   STAssertFalse(my_self.visible, @"should be toggled to false");
+   [my_self toggleVisible];
+   STAssertTrue(my_self.visible, @"should be toggled to true");
 }
 
 - (void) testTwitterFriends
 {
    NSArray *twitter_friends = [my_self twitterFriends];
    STAssertTrue(twitter_friends.count > 0, @"at least one twitter friend exist");
+   // NSLog(@"twitter friends count = %d, first is %@", twitter_friends.count, [twitter_friends objectAtIndex:0]);
 }
 
 - (void) testSendCurrentLocation

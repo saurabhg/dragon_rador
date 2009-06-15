@@ -23,6 +23,6 @@
 }
 
 - (id) initWithName:(NSString *)name;
-- (NSArray *) retrieveFriends;
+- (NSArray *) retrieveFriends;        // retrieve at most 100 friends at once
 
 @end // TwitterFriends
