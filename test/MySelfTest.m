@@ -28,6 +28,7 @@
 
 - (void) testToggleVisible
 {
+   STAssertTrue(my_self.visible, @"default is visible");
 }
 
 @end

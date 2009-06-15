@@ -19,6 +19,8 @@
    BOOL visible;
 }
 
+@property (readonly) BOOL visible;
+
 - (id) initWithName:(NSString *)name password:(NSString *)pw;
 
 - (void) toggleVisible;

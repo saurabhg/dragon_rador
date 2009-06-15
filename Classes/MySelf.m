@@ -9,6 +9,7 @@
 #import "MySelf.h"
 
 @implementation MySelf
+@synthesize visible;
 
 - (id) initWithName:(NSString *)name password:(NSString *)pw
 {
