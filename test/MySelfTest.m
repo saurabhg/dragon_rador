@@ -8,12 +8,13 @@
 
 #import "MySelfTest.h"
 #import "MySelf.h"
+#import "PrivateInfo.h"
 
 @implementation MySelfTest
 
 - (void) setUp
 {
-   my_self = [[MySelf alloc] initWithName:@"hoge" password:@"fuga"];
+   my_self = [[MySelf alloc] initWithName:PRIV_TWITTER_USER password:PRIV_TWITTER_PASS];
 }
 
 - (void) tearDown
@@ -29,6 +30,17 @@
 - (void) testToggleVisible
 {
    STAssertTrue(my_self.visible, @"default is visible");
+}
+
+- (void) testTwitterFriends
+{
+   NSArray *twitter_friends = [my_self twitter_friends];
+   STAssertTrue(twitter_friends.count > 0, @"at least one twitter friend exist");
+}
+
+- (void) testSendCurrentLocation
+{
+   STAssertTrue(NO, @"not yet");
 }
 
 @end
