@@ -12,8 +12,6 @@
 #import "AppDelegate.h"
 #import "MySelf.h"
 
-#pragma mark FriendsPickViewController
-
 @interface FriendsPickViewController (Private)
 - (UIImage *) getIcon:(NSDictionary *)user;
 @end // FriendsPickViewController (Private)
@@ -29,15 +27,9 @@
    self.navigationItem.leftBarButtonItem = backButton;
    [backButton release];
 
-   NSArray *saved_friends = [[NSUserDefaults standardUserDefaults] arrayForKey:DR_FRIENDS];
-   selected_friends = saved_friends ? [NSMutableArray arrayWithArray:saved_friends] : [NSMutableArray array];
-   [selected_friends retain];
-
-   NSLog(@"saved friends are %@", saved_friends);
-
    AppDelegate *app = [UIApplication sharedApplication].delegate;
-   MySelf *my_self = app.my_self;
-   friends = [[my_self twitterFriends] retain];
+   my_self = app.my_self;
+   twitter_friends = [[my_self twitterFriends] retain];
 }
 
 - (void)didReceiveMemoryWarning
@@ -54,7 +46,7 @@
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-   return friends.count;
+   return twitter_friends.count;
 }
 
 // Customize the appearance of table view cells.
@@ -68,12 +60,12 @@
    }
    cell.accessoryType = UITableViewCellAccessoryNone;
 
-   NSDictionary *user = [friends objectAtIndex:indexPath.row];
+   NSDictionary *user = [twitter_friends objectAtIndex:indexPath.row];
    UIImage *img = [self getIcon:user];
    cell.imageView.image = img;
    cell.textLabel.text = [user objectForKey:@"screen_name"];
 
-   if ([selected_friends containsObject:[user objectForKey:@"screen_name"]])
+   if ([my_self.friends containsObject:[user objectForKey:@"screen_name"]])
       cell.accessoryType = UITableViewCellAccessoryCheckmark;
 
    return cell;
@@ -81,26 +73,26 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   NSDictionary *user = [friends objectAtIndex:indexPath.row];
+   NSDictionary *user = [twitter_friends objectAtIndex:indexPath.row];
    NSString *friend_name = [user objectForKey:@"screen_name"];
    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
 
-   if ([selected_friends containsObject:friend_name]) {
-      [selected_friends removeObject:friend_name];
+   if ([my_self.friends containsObject:friend_name]) {
+      [my_self.friends removeObject:friend_name];
       cell.accessoryType = UITableViewCellAccessoryNone;
    } else  {
-      [selected_friends addObject:friend_name];
+      [my_self.friends addObject:friend_name];
       cell.accessoryType = UITableViewCellAccessoryCheckmark;
    }
 
-   [[NSUserDefaults standardUserDefaults] setObject:selected_friends forKey:DR_FRIENDS];
+   [[NSUserDefaults standardUserDefaults] setObject:my_self.friends forKey:DR_FRIENDS];
    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 #pragma mark others
 - (void)dealloc
 {
-   [friends release];
+   [twitter_friends release];
    [super dealloc];
 }
 

@@ -15,11 +15,12 @@
    NSString *twitter_user_name;
    NSString *twitter_password;
 
-   NSMutableSet *friends;  // collection of Friend
+   NSMutableArray *friends;  // collection of Friend
    BOOL visible;
 }
 
 @property (readonly) BOOL visible;
+@property (nonatomic,readonly) NSMutableArray *friends;
 
 - (id) initWithName:(NSString *)name password:(NSString *)pw;
 

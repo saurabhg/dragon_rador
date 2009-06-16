@@ -15,14 +15,19 @@
 @end // MySelf (Private)
 
 @implementation MySelf
-@synthesize visible;
+@synthesize visible, friends;
 
 - (id) initWithName:(NSString *)name password:(NSString *)pw
 {
    if (self = [super init]) {
       twitter_user_name = [name retain];
       twitter_password = [pw retain];
-      friends = [[NSMutableSet set] retain];
+
+      NSArray *saved_friends = [[NSUserDefaults standardUserDefaults] objectForKey:DR_FRIENDS];
+      friends = saved_friends ? [NSMutableArray arrayWithArray:saved_friends] : [NSMutableArray array];
+      [friends retain];
+      NSLog(@"friends are %@", friends);
+
       visible = YES; // visible by default
    }
    return self;

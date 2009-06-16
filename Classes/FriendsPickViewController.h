@@ -6,10 +6,12 @@
 //  Copyright 2009 deadbeaf.org. All rights reserved.
 //
 
+@class MySelf;
+
 @interface FriendsPickViewController : UITableViewController
 {
-   NSArray *friends;
-   NSMutableArray *selected_friends;
+   NSArray *twitter_friends;
+   MySelf *my_self;
 }
 
 @end

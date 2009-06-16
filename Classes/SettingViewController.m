@@ -217,6 +217,7 @@
    NSLog(@"commitUserInfo");
    [[NSUserDefaults standardUserDefaults] setObject:userField.text forKey:DR_TWITTER_USER];
    [[NSUserDefaults standardUserDefaults] setObject:passwordField.text forKey:DR_TWITTER_PASSWORD];
+   [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end
