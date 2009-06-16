@@ -68,6 +68,7 @@
    NSLog(@"lat=%f, long=%f, timestamp=%@",
       location.coordinate.latitude, location.coordinate.longitude, timestamp);
 
+   // construct POST request
    NSString *post_str = [NSString stringWithFormat:@"name=%@&location=(%f,%f)&timestamp=%@",
       twitter_user_name,
       location.coordinate.latitude, location.coordinate.longitude,

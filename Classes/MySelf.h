@@ -24,6 +24,7 @@
 - (id) initWithName:(NSString *)name password:(NSString *)pw;
 
 - (void) toggleVisible;
+// POST current location to the app server.
 - (void) sendCurrentLocation:(CLLocation *)location;
 - (NSArray *) twitterFriends; // friends on Twitter
 - (void) addFriend:(Friend *)friend;

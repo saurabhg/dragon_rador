@@ -397,7 +397,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
-				SDKROOT = "";
+				SDKROOT = iphonesimulator3.0;
 			};
 			name = Test;
 		};
@@ -436,7 +436,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = UnitTest;
-				SDKROOT = "";
+				SDKROOT = iphonesimulator3.0;
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Test;
