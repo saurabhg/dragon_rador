@@ -8,6 +8,7 @@
 
 #import "FriendsPickViewController.h"
 #import "DragonRador.h"
+#import "TwitterFriends.h"
 
 #pragma mark FriendsPickViewController
 

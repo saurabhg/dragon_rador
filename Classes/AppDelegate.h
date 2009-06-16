@@ -1,17 +1,17 @@
 //
-//  DragonRadorAppDelegate.h
+//  AppDelegate.h
 //  DragonRador
 //
 //  Created by mootoh on 5/24/09.
 //  Copyright deadbeaf.org 2009. All rights reserved.
 //
 
-#import "DragonRadorMapViewController.h"
+#import "DRMapViewController.h"
 
-@interface DragonRadorAppDelegate : NSObject <UIApplicationDelegate>
+@interface AppDelegate : NSObject <UIApplicationDelegate>
 {
    UIWindow *window;
-   DragonRadorMapViewController *view_controller;
+   DRMapViewController *view_controller;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;

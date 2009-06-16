@@ -1,23 +1,23 @@
 //
-//  DragonRadorMapViewController.m
+//  DRMapViewController.m
 //  DragonRador
 //
 //  Created by mootoh on 5/24/09.
 //  Copyright 2009 deadbeaf.org. All rights reserved.
 //
 #import <MapKit/MapKit.h>
-#import "DragonRadorMapViewController.h"
+#import "DRMapViewController.h"
 #import "UICUserLocation.h"
 #import "SettingViewController.h"
 #import "DragonRador.h"
 #import "FriendsPickViewController.h"
 
-@interface DragonRadorMapViewController (Private)
+@interface DRMapViewController (Private)
 - (void) setupNetwork;
 - (void) setupDummies;
 @end
 
-@implementation DragonRadorMapViewController
+@implementation DRMapViewController
 @synthesize map_view;
 
 - (void) dealloc

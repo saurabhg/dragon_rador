@@ -1,5 +1,5 @@
 //
-//  DragonRadorMapViewController.h
+//  DRMapViewController.h
 //  DragonRador
 //
 //  Created by mootoh on 5/24/09.
@@ -10,7 +10,7 @@
 @protocol MKMapViewDelegate;
 @class MKMapView;
 
-@interface DragonRadorMapViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate>
+@interface DRMapViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate>
 {
    IBOutlet MKMapView *map_view;
    NSMutableArray *friends;
