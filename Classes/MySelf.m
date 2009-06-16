@@ -6,11 +6,12 @@
 //  Copyright 2009 deadbeaf.org. All rights reserved.
 //
 
+#import <CoreLocation/CoreLocation.h>
 #import "MySelf.h"
 #import "TwitterFriends.h"
+#import "DragonRador.h"
 
 @interface MySelf (Private)
-- (NSArray *) retrieveFriends;
 @end // MySelf (Private)
 
 @implementation MySelf
@@ -36,6 +37,12 @@
    return self;
 }
 
+- (void)encodeWithCoder:(NSCoder *)encoder
+{
+   NSAssert(NO, @"not implemented yet");
+   // TODO
+}
+
 - (void) dealloc
 {
    [friends release];
@@ -50,9 +57,34 @@
    // TODO: do something with updating view..
 }
 
-- (void) sendCurrentLocation
+- (void) sendCurrentLocation:(CLLocation *)location
 {
-   // TODO
+   // Timestamp
+   NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+   [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+   [dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
+   NSString *timestamp = [dateFormatter stringFromDate:location.timestamp];
+
+   NSLog(@"lat=%f, long=%f, timestamp=%@",
+      location.coordinate.latitude, location.coordinate.longitude, timestamp);
+
+   NSString *post_str = [NSString stringWithFormat:@"name=%@&location=(%f,%f)&timestamp=%@",
+      twitter_user_name,
+      location.coordinate.latitude, location.coordinate.longitude,
+      timestamp];
+
+   NSData *post_data = [post_str dataUsingEncoding:NSASCIIStringEncoding];
+
+   NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/update", LOCATION_SERVER]]];
+   [req setHTTPMethod:@"POST"];
+   [req setHTTPBody:post_data];
+
+   NSURLResponse *res = nil;
+   NSError *err = nil;
+   [NSURLConnection sendSynchronousRequest:req returningResponse:&res error:&err];
+   if (err) {
+      NSLog(@"error: %@", [err localizedDescription]);
+   }
 }
 
 - (NSArray *) twitterFriends

@@ -52,6 +52,8 @@
 
 - (void) testSendCurrentLocation
 {
+   CLLocation *loc = [[CLLocation alloc] initWithLatitude:35.697944f longitude:139.414398f];
+   [my_self sendCurrentLocation:loc];
    //STAssertTrue(NO, @"not yet");
 }
 

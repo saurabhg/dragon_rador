@@ -21,6 +21,7 @@
 		92964ABE0FE6FE2200F7E8FC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		92964ACD0FE6FF2B00F7E8FC /* MySelf.m in Sources */ = {isa = PBXBuildFile; fileRef = 923F78820FE68222007620A2 /* MySelf.m */; };
 		92964AD80FE6FF9500F7E8FC /* MySelfTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 92964AD70FE6FF9500F7E8FC /* MySelfTest.m */; };
+		929D96D10FE7DB6500445CF2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B91AC20E0FC93EA000A27181 /* CoreLocation.framework */; };
 		92B656EE0FDBD52B00F9BBC1 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B656EC0FDBD52B00F9BBC1 /* SettingViewController.m */; };
 		92B656EF0FDBD52B00F9BBC1 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92B656ED0FDBD52B00F9BBC1 /* SettingViewController.xib */; };
 		92E125F80FE707CB00736385 /* TwitterFriends.m in Sources */ = {isa = PBXBuildFile; fileRef = 92E125F70FE707CB00736385 /* TwitterFriends.m */; };
@@ -86,6 +87,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				92964ABE0FE6FE2200F7E8FC /* Foundation.framework in Frameworks */,
+				929D96D10FE7DB6500445CF2 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

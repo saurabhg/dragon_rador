@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class Friend;
+@class Friend, CLLocation;
 
 @interface MySelf : NSObject <NSCoding>
 {
@@ -24,7 +24,7 @@
 - (id) initWithName:(NSString *)name password:(NSString *)pw;
 
 - (void) toggleVisible;
-- (void) sendCurrentLocation;
+- (void) sendCurrentLocation:(CLLocation *)location;
 - (NSArray *) twitterFriends; // friends on Twitter
 - (void) addFriend:(Friend *)friend;
 - (void) removeFriend:(Friend *)friend;
