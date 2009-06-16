@@ -14,32 +14,13 @@
 
 #pragma mark FriendsPickViewController
 
+@interface FriendsPickViewController (Private)
+- (UIImage *) getIcon:(NSDictionary *)user;
+@end // FriendsPickViewController (Private)
+
 @implementation FriendsPickViewController
 
-- (UIImage *) getIcon:(NSDictionary *)user
-{
-   NSURL *url = [NSURL URLWithString:[user objectForKey:@"image_url"]];
-
-   NSURLRequest *req = [NSURLRequest requestWithURL:url];
-   NSURLResponse *res = nil;
-   NSError *err = nil;
-   NSData *data = [NSURLConnection sendSynchronousRequest:req returningResponse:&res error:&err];
-   if (err) {
-      NSLog(@"error: %@", [err localizedDescription]);
-   }
-   UIImage *img = [UIImage imageWithData:data];
-   return [img retain];
-}
-
 #pragma mark ViewController
-/*
-- (id)initWithStyle:(UITableViewStyle)style {
-    // Override initWithStyle: if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-    if (self = [super initWithStyle:style]) {
-    }
-    return self;
-}
-*/
 
 - (void)viewDidLoad
 {
@@ -116,6 +97,7 @@
    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+#pragma mark others
 - (void)dealloc
 {
    [friends release];
@@ -129,3 +111,21 @@
 
 @end
 
+@implementation FriendsPickViewController (Private)
+
+- (UIImage *) getIcon:(NSDictionary *)user
+{
+   NSURL *url = [NSURL URLWithString:[user objectForKey:@"image_url"]];
+
+   NSURLRequest *req = [NSURLRequest requestWithURL:url];
+   NSURLResponse *res = nil;
+   NSError *err = nil;
+   NSData *data = [NSURLConnection sendSynchronousRequest:req returningResponse:&res error:&err];
+   if (err) {
+      NSLog(@"error: %@", [err localizedDescription]);
+   }
+   UIImage *img = [UIImage imageWithData:data];
+   return [img retain];
+}
+
+@end
