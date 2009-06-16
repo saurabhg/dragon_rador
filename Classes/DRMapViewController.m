@@ -11,6 +11,8 @@
 #import "SettingViewController.h"
 #import "DragonRador.h"
 #import "FriendsPickViewController.h"
+#import "AppDelegate.h"
+#import "MySelf.h"
 
 @interface DRMapViewController (Private)
 - (void) setupNetwork;
@@ -41,7 +43,6 @@
    map_view.region = initial_region;
 
    [self setupNetwork];
-   //[self setupDummies];
 
    // friends
    NSArray *saved_friends = [[NSUserDefaults standardUserDefaults] arrayForKey:DR_FRIENDS];
@@ -138,16 +139,6 @@
 {
 }
 
-- (void) setupDummies
-{
-   CLLocation *loc = [[CLLocation alloc] initWithLatitude:35.697944f longitude:139.414398f];
-   UICUserLocation *other_user_location = [[UICUserLocation alloc] initWithFrame:CGRectMake(32, 32, 16, 16) location:loc];
-   [loc release];
-   other_user_location.user_name = @"> <";
-   [friends addObject:other_user_location];
-   [other_user_location release];   
-}
-
 - (void) updateMyLocation
 {
    NSDictionary *current_my_info = [[NSUserDefaults standardUserDefaults] dictionaryForKey:DR_MY_LOCATION];
@@ -195,11 +186,8 @@
     didUpdateToLocation:(CLLocation *)newLocation
            fromLocation:(CLLocation *)oldLocation
 {
-   NSArray *keys = [NSArray arrayWithObjects:@"latitude", @"longitude", @"timestamp", nil];
-   NSArray *vals = [NSArray arrayWithObjects:[NSNumber numberWithFloat:newLocation.coordinate.latitude], [NSNumber numberWithFloat:newLocation.coordinate.longitude], newLocation.timestamp, nil];
-   NSDictionary *current_my_info = [NSDictionary dictionaryWithObjects:vals forKeys:keys];
-   [[NSUserDefaults standardUserDefaults] setObject:current_my_info forKey:DR_MY_LOCATION];
-   [self updateMyLocation];
+   AppDelegate *app = [[UIApplication sharedApplication] delegate];
+   [app.my_self sendCurrentLocation:newLocation];
 }
 
 /*

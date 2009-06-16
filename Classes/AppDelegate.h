@@ -8,12 +8,16 @@
 
 #import "DRMapViewController.h"
 
+@class MySelf;
+
 @interface AppDelegate : NSObject <UIApplicationDelegate>
 {
    UIWindow *window;
    DRMapViewController *view_controller;
+   MySelf *my_self;
 }
 
+@property (nonatomic, assign) MySelf *my_self;
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UIViewController *view_controller;
 
