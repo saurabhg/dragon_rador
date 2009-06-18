@@ -25,7 +25,6 @@
 - (void) dealloc
 {
    [location_manager dealloc];
-   [friends release];
    [super dealloc];
 }
 
@@ -44,6 +43,7 @@
 
    [self setupNetwork];
 
+#if 0
    // friends
    NSArray *saved_friends = [[NSUserDefaults standardUserDefaults] arrayForKey:DR_FRIENDS];
    NSArray *friends_names = saved_friends ? saved_friends : [NSMutableArray array];
@@ -58,6 +58,7 @@
       [friends addObject:ul];
       [ul release];
    }
+#endif // 0
 
    location_manager = [[CLLocationManager alloc] init];
    location_manager.delegate = self;
@@ -69,10 +70,12 @@
       [UIView setAnimationDuration:0.20f];
       [UIView setAnimationDelegate:self];
 
+#if 0
       for (UICUserLocation *ul in friends) {
          CGPoint pt = [map_view convertCoordinate:ul.location.coordinate toPointToView:nil];
          ul.center = pt;
       }
+#endif // 0
    } [UIView commitAnimations];
 }
 

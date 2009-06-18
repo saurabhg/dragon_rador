@@ -81,6 +81,8 @@
 
 - (void) done
 {
+   [[NSUserDefaults standardUserDefaults] setBool:YES forKey:DR_TWITTER_AUTHORIZED];
+
    // [self dismissModalViewControllerAnimated:YES];  
    AppDelegate *app = [UIApplication sharedApplication].delegate;
    [self.view removeFromSuperview];
@@ -276,6 +278,8 @@
       NSLog(@"error: %@", [err localizedDescription]);
       return NO;
    }
+
+   // check response
    return YES;
 }
 

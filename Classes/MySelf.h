@@ -30,5 +30,6 @@
 - (NSArray *) twitterFriends; // friends on Twitter
 - (void) addFriend:(Friend *)friend;
 - (void) removeFriend:(Friend *)friend;
+- (void) saveFriends; // save to persistent storage
 
 @end

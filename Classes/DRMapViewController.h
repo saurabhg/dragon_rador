@@ -13,7 +13,6 @@
 @interface DRMapViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate>
 {
    IBOutlet MKMapView *map_view;
-   NSMutableArray *friends;
    CLLocationManager *location_manager;
 }
 

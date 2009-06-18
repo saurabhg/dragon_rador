@@ -13,12 +13,11 @@
 
 @interface MySelf (Private)
 - (void) loadFriends;
+- (NSString *) pathToFriendsFile;
 @end // MySelf (Private)
 
 @implementation MySelf
 @synthesize visible, friends;
-
-#define FRIENDS_FILE @"friends.dat"
 
 - (id) initWithName:(NSString *)name password:(NSString *)pw
 {
@@ -87,24 +86,51 @@
    return twitter_friends;
 }
 
+- (void) addFriend:(Friend *)friend
+{
+}
+
+- (void) removeFriend:(Friend *)friend;
+{
+}
+
+- (void) saveFriends
+{
+   NSMutableData *theData = [NSMutableData data];
+   NSKeyedArchiver *encoder = [[[NSKeyedArchiver alloc] initForWritingWithMutableData:theData] autorelease];
+
+   [encoder encodeObject:friends forKey:@"friends"];
+   [encoder finishEncoding];
+
+   [theData writeToFile:[self pathToFriendsFile] atomically:YES];
+}
+
 @end
 
 @implementation MySelf (Private)
 
 - (void) loadFriends
 {
-   /*
+   NSString *path = [self pathToFriendsFile];
+
    NSFileManager *fm = [NSFileManager defaultManager];
-   if ([fm fileExistsAtPath:FRIENDS_FILE]) {
+   if ([fm fileExistsAtPath:path]) {
       NSMutableData *data = [NSMutableData dataWithContentsOfFile:path];
       NSKeyedUnarchiver *decoder = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
-      self.friends = [decoder decodeObjectForKey:@"friends"];
+      friends = [[decoder decodeObjectForKey:@"friends"] retain];
       [decoder finishDecoding];
       [decoder release];
    } else {
-      self.friends = [NSMutableSet set];
+      friends = [[NSMutableSet set] retain];
    }
-   */
+}
+
+#define FRIENDS_FILE @"friends.dat"
+- (NSString *) pathToFriendsFile
+{
+   NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+   NSString *documentDirectory = [paths objectAtIndex:0];
+   return [documentDirectory stringByAppendingPathComponent:FRIENDS_FILE];
 }
 
 @end

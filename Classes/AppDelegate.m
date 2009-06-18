@@ -35,12 +35,13 @@
 {
    [view_controller release];
    [window release];
-   [my_self release];
+   if (my_self) [my_self release];
    [super dealloc];
 }
 
 - (void) applicationWillTerminate:(UIApplication *)application
 {
+   [my_self saveFriends];
    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
