@@ -12,6 +12,7 @@
 
 @interface SettingViewController (Private)
 - (BOOL) authorize; // authorize via Twitter verify_credentials
+- (BOOL) registToServer; // regist authorized user to the server.
 @end // SettingViewController (Private)
 
 @implementation SettingViewController
@@ -231,7 +232,11 @@
    [[NSUserDefaults standardUserDefaults] setObject:passwordField.text forKey:DR_TWITTER_PASSWORD];
 
    if ([self authorize]) {
-      [self done];
+      if ([self registToServer]) {
+         [self done];
+      } else {
+         // Alert
+      }
    } else {
       // Alert
    }
@@ -240,12 +245,16 @@
 - (BOOL) authorize
 {
    // start activity indicator
+
    // call Twitter verify_credentials API
    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@:%@@twitter.com/account/verify_credentials.xml", userField.text, passwordField.text]];
    NSURLRequest *req = [NSURLRequest requestWithURL:url];
    NSHTTPURLResponse *res = nil;
    NSError *err = nil;
-   NSData *data = [NSURLConnection sendSynchronousRequest:req returningResponse:&res error:&err];
+   [NSURLConnection sendSynchronousRequest:req returningResponse:&res error:&err];
+
+   // stop activity indicator
+
    if (err) {
       // show alert
       NSLog(@"error: %@", [err localizedDescription]);
@@ -253,6 +262,21 @@
    }
 
    return res.statusCode == 200;
+}
+
+- (BOOL) registToServer
+{
+   NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/resgister?user_name=%@", LOCATION_SERVER, userField.text]]];
+   [req setHTTPMethod:@"POST"];
+   //[req setHTTPBody:post_data];
+   NSHTTPURLResponse *res = nil;
+   NSError *err = nil;
+   [NSURLConnection sendSynchronousRequest:req returningResponse:&res error:&err];
+   if (err) {
+      NSLog(@"error: %@", [err localizedDescription]);
+      return NO;
+   }
+   return YES;
 }
 
 @end // SettingViewController (Private)
