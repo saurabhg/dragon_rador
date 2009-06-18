@@ -9,6 +9,11 @@
 #import "AppDelegate.h"
 #import "MySelf.h"
 #import "DragonRador.h"
+#import "SettingViewController.h"
+
+@interface AppDelegate (Private)
+- (void) showAuthorization;
+@end // AppDelegate
 
 @implementation AppDelegate
 
@@ -16,11 +21,13 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application
 {
-   // create my_self from scratch or from persistent storage.
-   my_self = [[MySelf alloc] initWithName:[[NSUserDefaults standardUserDefaults] stringForKey:DR_TWITTER_USER] password:[[NSUserDefaults standardUserDefaults] stringForKey:DR_TWITTER_PASSWORD]];
-
-   view_controller = [[DRMapViewController alloc] initWithNibName:@"DRMapView" bundle:nil];
-   [window addSubview:view_controller.view];
+   if (! [[NSUserDefaults standardUserDefaults] boolForKey:DR_TWITTER_AUTHORIZED]) {
+      my_self = nil;
+      // authorize first
+      [self showAuthorization];
+   } else {
+      [self authorized];
+   }
    [window makeKeyAndVisible];
 }
 
@@ -32,4 +39,34 @@
    [super dealloc];
 }
 
-@end
+- (void) applicationWillTerminate:(UIApplication *)application
+{
+   [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void) authorized
+{
+   [setting_view_controller release];
+
+   // create my_self from scratch or from persistent storage.
+   my_self = [[MySelf alloc] initWithName:[[NSUserDefaults standardUserDefaults] stringForKey:DR_TWITTER_USER] password:[[NSUserDefaults standardUserDefaults] stringForKey:DR_TWITTER_PASSWORD]];
+
+   view_controller = [[DRMapViewController alloc] initWithNibName:@"DRMapView" bundle:nil];
+   [window addSubview:view_controller.view];
+}
+
+@end // AppDelegate
+
+@implementation AppDelegate (Private)
+
+- (void) showAuthorization
+{
+   setting_view_controller = [[SettingViewController alloc] initWithNibName:nil bundle:nil];
+   //UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:svc];
+   //[self presentModalViewController:nc animated:YES];
+   //[nc release];
+   [window addSubview:setting_view_controller.view];
+   //[svc release];
+}
+
+@end // AppDelegate (Private)

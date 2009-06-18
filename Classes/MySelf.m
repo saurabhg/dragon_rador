@@ -12,10 +12,13 @@
 #import "DragonRador.h"
 
 @interface MySelf (Private)
+- (void) loadFriends;
 @end // MySelf (Private)
 
 @implementation MySelf
 @synthesize visible, friends;
+
+#define FRIENDS_FILE @"friends.dat"
 
 - (id) initWithName:(NSString *)name password:(NSString *)pw
 {
@@ -23,29 +26,12 @@
       twitter_user_name = [name retain];
       twitter_password = [pw retain];
 
-      NSArray *saved_friends = [[NSUserDefaults standardUserDefaults] objectForKey:DR_FRIENDS];
-      friends = saved_friends ? [NSMutableArray arrayWithArray:saved_friends] : [NSMutableArray array];
-      [friends retain];
+      [self loadFriends];
       NSLog(@"friends are %@", friends);
 
       visible = YES; // visible by default
    }
    return self;
-}
-
-- (id) initWithCoder:(NSCoder *)decoder
-{
-   twitter_user_name = [[decoder decodeObjectForKey:@"twitter_user_name"] retain];
-   twitter_password = [[decoder decodeObjectForKey:@"twitter_password"] retain];
-   friends = [[decoder decodeObjectForKey:@"friends"] retain];
-   visible = YES; // visible by default
-   return self;
-}
-
-- (void)encodeWithCoder:(NSCoder *)encoder
-{
-   NSAssert(NO, @"not implemented yet");
-   // TODO
 }
 
 - (void) dealloc
@@ -99,6 +85,26 @@
    NSArray *twitter_friends = [[tf retrieveFriends] retain];
    [tf release];
    return twitter_friends;
+}
+
+@end
+
+@implementation MySelf (Private)
+
+- (void) loadFriends
+{
+   /*
+   NSFileManager *fm = [NSFileManager defaultManager];
+   if ([fm fileExistsAtPath:FRIENDS_FILE]) {
+      NSMutableData *data = [NSMutableData dataWithContentsOfFile:path];
+      NSKeyedUnarchiver *decoder = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
+      self.friends = [decoder decodeObjectForKey:@"friends"];
+      [decoder finishDecoding];
+      [decoder release];
+   } else {
+      self.friends = [NSMutableSet set];
+   }
+   */
 }
 
 @end

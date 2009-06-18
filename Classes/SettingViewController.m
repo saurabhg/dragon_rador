@@ -8,6 +8,11 @@
 
 #import "SettingViewController.h"
 #import "DragonRador.h"
+#import "AppDelegate.h"
+
+@interface SettingViewController (Private)
+- (BOOL) authorize; // authorize via Twitter verify_credentials
+@end // SettingViewController (Private)
 
 @implementation SettingViewController
 @synthesize table_view;
@@ -29,9 +34,9 @@
    [super viewDidLoad];
    self.title = @"Setting";
    
-   UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)];
-   self.navigationItem.leftBarButtonItem = backButton;
-   [backButton release];
+   //UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)];
+   //self.navigationItem.leftBarButtonItem = backButton;
+   //[backButton release];
 
    userField     = [[UITextField alloc] initWithFrame:CGRectMake(100, 11, 128, 22)];
    NSString *user_name = [[NSUserDefaults standardUserDefaults] stringForKey:DR_TWITTER_USER];
@@ -75,7 +80,10 @@
 
 - (void) done
 {
-   [self dismissModalViewControllerAnimated:YES];  
+   // [self dismissModalViewControllerAnimated:YES];  
+   AppDelegate *app = [UIApplication sharedApplication].delegate;
+   [self.view removeFromSuperview];
+   [app authorized];
 }
 
 #pragma mark Table view methods
@@ -212,12 +220,39 @@
    return nil;
 }
 
+@end // SettingViewController
+
+@implementation SettingViewController (Private)
+
 - (void) commitUserInfo
 {
    NSLog(@"commitUserInfo");
    [[NSUserDefaults standardUserDefaults] setObject:userField.text forKey:DR_TWITTER_USER];
    [[NSUserDefaults standardUserDefaults] setObject:passwordField.text forKey:DR_TWITTER_PASSWORD];
-   [[NSUserDefaults standardUserDefaults] synchronize];
+
+   if ([self authorize]) {
+      [self done];
+   } else {
+      // Alert
+   }
 }
 
-@end
+- (BOOL) authorize
+{
+   // start activity indicator
+   // call Twitter verify_credentials API
+   NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@:%@@twitter.com/account/verify_credentials.xml", userField.text, passwordField.text]];
+   NSURLRequest *req = [NSURLRequest requestWithURL:url];
+   NSHTTPURLResponse *res = nil;
+   NSError *err = nil;
+   NSData *data = [NSURLConnection sendSynchronousRequest:req returningResponse:&res error:&err];
+   if (err) {
+      // show alert
+      NSLog(@"error: %@", [err localizedDescription]);
+      return NO;
+   }
+
+   return res.statusCode == 200;
+}
+
+@end // SettingViewController (Private)

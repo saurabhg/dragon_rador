@@ -86,7 +86,6 @@
    }
 
    [[NSUserDefaults standardUserDefaults] setObject:my_self.friends forKey:DR_FRIENDS];
-   [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 #pragma mark others

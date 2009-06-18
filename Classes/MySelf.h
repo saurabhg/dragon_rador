@@ -10,17 +10,17 @@
 
 @class Friend, CLLocation;
 
-@interface MySelf : NSObject <NSCoding>
+@interface MySelf : NSObject
 {
    NSString *twitter_user_name;
    NSString *twitter_password;
 
-   NSMutableArray *friends;  // collection of Friend
+   NSMutableSet *friends;  // collection of Friend
    BOOL visible;
 }
 
 @property (readonly) BOOL visible;
-@property (nonatomic,readonly) NSMutableArray *friends;
+@property (nonatomic,readonly) NSMutableSet *friends;
 
 - (id) initWithName:(NSString *)name password:(NSString *)pw;
 
