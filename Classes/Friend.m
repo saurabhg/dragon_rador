@@ -20,6 +20,17 @@
    return self;
 }
 
+- (void) dealloc
+{
+   [name release];
+   if (image) [image release];
+   if (location) [location release];
+   if (last_update) [last_update release];
+   [super dealloc];
+}
+
+#pragma mark NSCoding
+
 - (id) initWithCoder:(NSCoder *) decoder
 {
    self.name = [decoder decodeObjectForKey:@"name"];
@@ -30,15 +41,15 @@
    return self;
 }
 
-- (void) dealloc
+- (void) encodeWithCoder:(NSCoder *)encoder
 {
-   [name release];
-   if (image) [image release];
-   if (location) [location release];
-   if (last_update) [last_update release];
-   [super dealloc];
+   [encoder encodeObject:name forKey:@"name"];
+   [encoder encodeObject:image_url forKey:@"image_url"];
+   [encoder encodeObject:location forKey:@"location"];
+   [encoder encodeObject:last_update forKey:@"last_update"];
 }
 
+#pragma mark --
 - (void) update
 {
 }

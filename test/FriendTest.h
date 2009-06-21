@@ -13,7 +13,6 @@
 
 @interface FriendTest : SenTestCase
 {
-   Friend *friend;
 }
 
 @end
