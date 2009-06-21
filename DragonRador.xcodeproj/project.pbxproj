@@ -13,6 +13,7 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		922853DC0FEDF3CB00B81D0D /* FriendTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 922853DB0FEDF3CB00B81D0D /* FriendTest.m */; };
 		923F78830FE68222007620A2 /* MySelf.m in Sources */ = {isa = PBXBuildFile; fileRef = 923F78820FE68222007620A2 /* MySelf.m */; };
 		923F79040FE687EC007620A2 /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = 923F79030FE687EC007620A2 /* Friend.m */; };
 		927288F90FE4F66200547495 /* FriendsPickViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 927288F80FE4F66200547495 /* FriendsPickViewController.m */; };
@@ -44,6 +45,8 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* DragonRador_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragonRador_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* DragonRador-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DragonRador-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		922853DA0FEDF3CB00B81D0D /* FriendTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendTest.h; path = test/FriendTest.h; sourceTree = "<group>"; };
+		922853DB0FEDF3CB00B81D0D /* FriendTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FriendTest.m; path = test/FriendTest.m; sourceTree = "<group>"; };
 		923F78810FE68222007620A2 /* MySelf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySelf.h; sourceTree = "<group>"; };
 		923F78820FE68222007620A2 /* MySelf.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySelf.m; sourceTree = "<group>"; };
 		923F79020FE687EC007620A2 /* Friend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Friend.h; sourceTree = "<group>"; };
@@ -178,6 +181,8 @@
 				92964AB40FE6FD8900F7E8FC /* UnitTest-Info.plist */,
 				92964AD60FE6FF9500F7E8FC /* MySelfTest.h */,
 				92964AD70FE6FF9500F7E8FC /* MySelfTest.m */,
+				922853DA0FEDF3CB00B81D0D /* FriendTest.h */,
+				922853DB0FEDF3CB00B81D0D /* FriendTest.m */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -303,6 +308,7 @@
 				92964ACD0FE6FF2B00F7E8FC /* MySelf.m in Sources */,
 				92964AD80FE6FF9500F7E8FC /* MySelfTest.m in Sources */,
 				92E125F80FE707CB00736385 /* TwitterFriends.m in Sources */,
+				922853DC0FEDF3CB00B81D0D /* FriendTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
