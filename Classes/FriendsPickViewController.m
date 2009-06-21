@@ -11,6 +11,7 @@
 #import "TwitterFriends.h"
 #import "AppDelegate.h"
 #import "MySelf.h"
+#import "Friend.h"
 
 @interface FriendsPickViewController (Private)
 - (UIImage *) getIcon:(NSDictionary *)user;
@@ -61,11 +62,12 @@
    cell.accessoryType = UITableViewCellAccessoryNone;
 
    NSDictionary *user = [twitter_friends objectAtIndex:indexPath.row];
+   Friend *friend = [[[Friend alloc] initWithName:[user objectForKey:@"screen_name"]] autorelease];
    UIImage *img = [self getIcon:user];
    cell.imageView.image = img;
-   cell.textLabel.text = [user objectForKey:@"screen_name"];
+   cell.textLabel.text = friend.name;
 
-   if ([my_self.friends containsObject:[user objectForKey:@"screen_name"]])
+   if ([my_self.friends containsObject:friend])
       cell.accessoryType = UITableViewCellAccessoryCheckmark;
 
    return cell;
@@ -75,17 +77,19 @@
 {
    NSDictionary *user = [twitter_friends objectAtIndex:indexPath.row];
    NSString *friend_name = [user objectForKey:@"screen_name"];
+   Friend *friend = [[[Friend alloc] initWithName:friend_name] autorelease];
+
    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
 
-   if ([my_self.friends containsObject:friend_name]) {
-      [my_self.friends removeObject:friend_name];
+   if ([my_self.friends containsObject:friend]) {
+      [my_self.friends removeObject:friend];
       cell.accessoryType = UITableViewCellAccessoryNone;
    } else  {
-      [my_self.friends addObject:friend_name];
+      [my_self.friends addObject:friend];
       cell.accessoryType = UITableViewCellAccessoryCheckmark;
    }
 
-   [[NSUserDefaults standardUserDefaults] setObject:my_self.friends forKey:DR_FRIENDS];
+   //[[NSUserDefaults standardUserDefaults] setObject:my_self.friends forKey:DR_FRIENDS];
 }
 
 #pragma mark others

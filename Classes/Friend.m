@@ -58,4 +58,17 @@
 {
 }
 
+- (BOOL) isEqual:(id) other
+{
+   NSLog(@"Friend:isEqual");
+   Friend *other_friend = (Friend *)other;
+   return [name isEqualToString:other_friend.name];
+}
+
+- (NSString *) description
+{
+   return [NSString stringWithFormat:@"Friend %p: name=%@", self, name];
+   //return [NSString stringWithFormat:@"Friend %p: name=%@", self, @"hoge"];
+}
+
 @end

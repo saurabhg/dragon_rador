@@ -88,10 +88,12 @@
 
 - (void) addFriend:(Friend *)friend
 {
+   [friends addObject:friend];
 }
 
 - (void) removeFriend:(Friend *)friend;
 {
+   [friends removeObject:friend];
 }
 
 - (void) saveFriends

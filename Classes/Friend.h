@@ -20,11 +20,11 @@
    NSDate *last_update;
 }
 
-@property (nonatomic, assign) NSString *name;
-@property (nonatomic, assign) NSString *image_url;
-@property (nonatomic, assign) UIImage *image;
-@property (nonatomic, assign) CLLocation *location;
-@property (nonatomic, assign) NSDate *last_update;
+@property (nonatomic, retain) NSString *name;
+@property (nonatomic, retain) NSString *image_url;
+@property (nonatomic, retain) UIImage *image;
+@property (nonatomic, retain) CLLocation *location;
+@property (nonatomic, retain) NSDate *last_update;
 
 - (id) initWithName:(NSString *)nm;
 - (void) update; // retrieve latest information from the server
