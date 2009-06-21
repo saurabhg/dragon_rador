@@ -10,13 +10,23 @@
 
 @implementation Friend
 
-@synthesize name, image, location, last_update;
+@synthesize name, image_url, image, location, last_update;
 
 - (id) initWithName:(NSString *)nm
 {
    if (self = [super init]) {
       self.name = nm;
    }
+   return self;
+}
+
+- (id) initWithCoder:(NSCoder *) decoder
+{
+   self.name = [decoder decodeObjectForKey:@"name"];
+   self.image_url = [decoder decodeObjectForKey:@"image_url"];
+   self.location = [decoder decodeObjectForKey:@"location"];
+   self.last_update = [decoder decodeObjectForKey:@"last_update"];
+
    return self;
 }
 
@@ -30,6 +40,10 @@
 }
 
 - (void) update
+{
+}
+
+- (void) cacheImage
 {
 }
 
