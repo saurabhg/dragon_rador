@@ -27,13 +27,6 @@
    STAssertNotNil(my_self, @"instance check");
 }
 
-- (void) testInitWithCoder
-{
-   MySelf *another_me = [[MySelf alloc] initWithCoder:nil];
-   STAssertNotNil(another_me, @"instance check");
-   [another_me release];
-}
-
 - (void) testToggleVisible
 {
    STAssertTrue(my_self.visible, @"default is visible");
