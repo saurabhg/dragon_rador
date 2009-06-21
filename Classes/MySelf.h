@@ -31,5 +31,6 @@
 - (void) addFriend:(Friend *)friend;
 - (void) removeFriend:(Friend *)friend;
 - (void) saveFriends; // save to persistent storage
+- (BOOL) registToServer; // regist authorized user to the server.
 
 @end

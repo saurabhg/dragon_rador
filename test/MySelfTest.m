@@ -9,6 +9,7 @@
 #import "MySelfTest.h"
 #import "MySelf.h"
 #import "PrivateInfo.h"
+#import <CoreLocation/CoreLocation.h>
 
 @implementation MySelfTest
 
@@ -49,5 +50,12 @@
    [my_self sendCurrentLocation:loc];
    //STAssertTrue(NO, @"not yet");
 }
+
+#if 0
+- (void) testRegistToServer
+{
+   STAssertTrue([my_self registToServer], @"registToServer check");
+}
+#endif // 0
 
 @end

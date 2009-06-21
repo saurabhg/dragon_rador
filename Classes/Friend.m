@@ -7,6 +7,8 @@
 //
 
 #import "Friend.h"
+#import "DragonRador.h"
+#import <CoreLocation/CoreLocation.h>
 
 @implementation Friend
 
@@ -52,6 +54,35 @@
 #pragma mark --
 - (void) update
 {
+   NSLog(@"update for user=%@", name);
+   NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/user?name=%@", LOCATION_SERVER, name]]];
+   NSURLResponse *res = nil;
+   NSError *err = nil;
+   NSData *result = [NSURLConnection sendSynchronousRequest:req returningResponse:&res error:&err];
+   if (err) {
+      NSLog(@"error: %@", [err localizedDescription]);
+   }
+   NSString *result_str = [[NSString alloc] initWithData:result encoding:NSUTF8StringEncoding];
+   NSLog(@"Friend:update: %@", result_str);
+   NSArray *comps = [result_str componentsSeparatedByString:@"&"];
+   NSAssert([[comps objectAtIndex:0] isEqualToString:name], @"name should be equal");
+
+   NSArray *loc = [[comps objectAtIndex:1] componentsSeparatedByString:@","];
+   CLLocation *new_loc = [[CLLocation alloc] initWithLatitude:[[loc objectAtIndex:0] floatValue] longitude:[[loc objectAtIndex:1] floatValue]];
+   self.location = new_loc;
+
+   // Timestamp
+   NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+   [dateFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
+   [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+   [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+
+
+   NSDate *lu = [dateFormatter dateFromString:[comps objectAtIndex:2]];
+   NSLog(@"last update = %@ from %@", lu, [comps objectAtIndex:2]);
+   self.last_update = lu;
+
+   NSLog(@"Friend is now %@", self);
 }
 
 - (void) cacheImage
@@ -67,8 +98,7 @@
 
 - (NSString *) description
 {
-   return [NSString stringWithFormat:@"Friend %p: name=%@", self, name];
-   //return [NSString stringWithFormat:@"Friend %p: name=%@", self, @"hoge"];
+   return [NSString stringWithFormat:@"Friend %p: name=%@, location=%@,  last_update=%@, image_url=%@", self, name, location, last_update, image_url];
 }
 
 @end

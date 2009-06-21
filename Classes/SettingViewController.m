@@ -268,7 +268,7 @@
 
 - (BOOL) registToServer
 {
-   NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/resgister?user_name=%@", LOCATION_SERVER, userField.text]]];
+   NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/register?user_name=%@", LOCATION_SERVER, userField.text]]];
    [req setHTTPMethod:@"POST"];
    //[req setHTTPBody:post_data];
    NSHTTPURLResponse *res = nil;

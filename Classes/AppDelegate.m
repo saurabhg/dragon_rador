@@ -10,6 +10,7 @@
 #import "MySelf.h"
 #import "DragonRador.h"
 #import "SettingViewController.h"
+#import "Friend.h"
 
 @interface AppDelegate (Private)
 - (void) showAuthorization;
@@ -51,6 +52,8 @@
 
    // create my_self from scratch or from persistent storage.
    my_self = [[MySelf alloc] initWithName:[[NSUserDefaults standardUserDefaults] stringForKey:DR_TWITTER_USER] password:[[NSUserDefaults standardUserDefaults] stringForKey:DR_TWITTER_PASSWORD]];
+   for (Friend *friend in my_self.friends)
+      [friend update];
 
    view_controller = [[DRMapViewController alloc] initWithNibName:@"DRMapView" bundle:nil];
    [window addSubview:view_controller.view];

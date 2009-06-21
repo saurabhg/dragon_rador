@@ -14,6 +14,7 @@
 {
    IBOutlet MKMapView *map_view;
    CLLocationManager *location_manager;
+   NSMutableArray *friends;
 }
 
 @property (nonatomic, retain) MKMapView *map_view;

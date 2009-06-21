@@ -35,7 +35,6 @@ class MainPage(webapp.RequestHandler):
 class UserInfo(webapp.RequestHandler):
    def get(self):
       name = self.request.get('name')
-      self.response.out.write(name)
 
       if (name == ''):
          self.response.out.write('<h1>All Users</h1>')
@@ -50,11 +49,9 @@ class UserInfo(webapp.RequestHandler):
          return
 
       for user in users:
-         self.response.out.write('UserInfo: ')
-         self.response.out.write('name: %s ' % user.name)
-         self.response.out.write('location: %s ' % user.location)
-         self.response.out.write('last_updated: %s ' % user.last_updated)
-
+         self.response.out.write('%s&' % user.name)
+         self.response.out.write('%s&' % user.location)
+         self.response.out.write('%s' % user.last_updated)
 
 class Register(webapp.RequestHandler):
    def post(self):

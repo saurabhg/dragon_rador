@@ -54,4 +54,15 @@
    STAssertTrue([friend.last_update isEqualToDate:decoded_friend.last_update], @"property check");
 }
 
+- (void) testUpdate
+{
+   NSString *name = @"mootoh";
+   Friend *friend = [[Friend alloc] initWithName:name];
+   STAssertNil(friend.location, @"property check");
+   [friend update];
+   STAssertTrue([friend.name isEqualToString:@"mootoh"], @"property check");
+   STAssertNotNil(friend.location, @"property check");
+
+}
+
 @end

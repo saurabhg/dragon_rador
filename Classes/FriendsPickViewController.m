@@ -78,6 +78,7 @@
    NSDictionary *user = [twitter_friends objectAtIndex:indexPath.row];
    NSString *friend_name = [user objectForKey:@"screen_name"];
    Friend *friend = [[[Friend alloc] initWithName:friend_name] autorelease];
+   friend.image_url = [user objectForKey:@"image_url"];
 
    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
 

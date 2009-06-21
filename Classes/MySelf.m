@@ -26,7 +26,7 @@
       twitter_password = [pw retain];
 
       [self loadFriends];
-      NSLog(@"friends are %@", friends);
+      //NSLog(@"friends are %@", friends);
 
       visible = YES; // visible by default
    }
@@ -51,15 +51,17 @@
 {
    // Timestamp
    NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
-   [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-   [dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
+   [dateFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
+   [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+   [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+
    NSString *timestamp = [dateFormatter stringFromDate:location.timestamp];
 
    NSLog(@"lat=%f, long=%f, timestamp=%@",
       location.coordinate.latitude, location.coordinate.longitude, timestamp);
 
    // construct POST request
-   NSString *post_str = [NSString stringWithFormat:@"name=%@&location=(%f,%f)&timestamp=%@",
+   NSString *post_str = [NSString stringWithFormat:@"name=%@&location=%f,%f&timestamp=%@",
       twitter_user_name,
       location.coordinate.latitude, location.coordinate.longitude,
       timestamp];
@@ -105,6 +107,23 @@
    [encoder finishEncoding];
 
    [theData writeToFile:[self pathToFriendsFile] atomically:YES];
+}
+
+- (BOOL) registToServer
+{
+   NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/register?user_name=%@", LOCATION_SERVER, twitter_user_name]]];
+   [req setHTTPMethod:@"POST"];
+   //[req setHTTPBody:post_data];
+   NSHTTPURLResponse *res = nil;
+   NSError *err = nil;
+   [NSURLConnection sendSynchronousRequest:req returningResponse:&res error:&err];
+   if (err) {
+      NSLog(@"error: %@", [err localizedDescription]);
+      return NO;
+   }
+
+   // check response
+   return YES;
 }
 
 @end

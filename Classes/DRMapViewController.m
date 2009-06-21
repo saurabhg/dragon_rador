@@ -13,6 +13,7 @@
 #import "FriendsPickViewController.h"
 #import "AppDelegate.h"
 #import "MySelf.h"
+#import "Friend.h"
 
 @interface DRMapViewController (Private)
 - (void) setupNetwork;
@@ -24,6 +25,7 @@
 
 - (void) dealloc
 {
+   [friends release];
    [location_manager dealloc];
    [super dealloc];
 }
@@ -43,22 +45,33 @@
 
    [self setupNetwork];
 
-#if 0
+   friends = [[NSMutableArray alloc] init];
+   AppDelegate *app = [[UIApplication sharedApplication] delegate];
    // friends
-   NSArray *saved_friends = [[NSUserDefaults standardUserDefaults] arrayForKey:DR_FRIENDS];
-   NSArray *friends_names = saved_friends ? saved_friends : [NSMutableArray array];
+   for (Friend *friend in app.my_self.friends) {
+      UICUserLocation *ul = [[UICUserLocation alloc] initWithFrame:CGRectMake(32, 32, 16, 16) location:friend.location];
+      ul.user_name = friend.name;
 
-   friends = [[NSMutableArray array] retain];
 
-   for (NSString *friend_name in friends_names) {
-      CLLocation *loc = [[CLLocation alloc] initWithLatitude:35.697944f longitude:139.414398f];
-      UICUserLocation *ul = [[UICUserLocation alloc] initWithFrame:CGRectMake(32, 32, 16, 16) location:loc];
-      ul.user_name = friend_name;
-      [self.view addSubview:ul];
+      // retrieve friend's image
+      NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:friend.image_url]];
+      NSURLResponse *res = nil;
+      NSError *err = nil;
+      NSData *data = [NSURLConnection sendSynchronousRequest:req returningResponse:&res error:&err];
+      if (err) {
+         NSLog(@"error: %@", [err localizedDescription]);
+      }
+      UIImage *img = [UIImage imageWithData:data];
+      UIImageView *iv = [[UIImageView alloc] initWithImage:img];
+      [ul addSubview:iv];
+      [iv release];
+      [img release];
+
       [friends addObject:ul];
+
+      [self.view addSubview:ul];
       [ul release];
    }
-#endif // 0
 
    location_manager = [[CLLocationManager alloc] init];
    location_manager.delegate = self;
@@ -70,12 +83,11 @@
       [UIView setAnimationDuration:0.20f];
       [UIView setAnimationDelegate:self];
 
-#if 0
       for (UICUserLocation *ul in friends) {
          CGPoint pt = [map_view convertCoordinate:ul.location.coordinate toPointToView:nil];
+         NSLog(@"%@ location = (%f, %f) => point => (%f, %f)", ul.user_name, ul.location.coordinate.latitude, ul.location.coordinate.longitude, pt.x, pt.y);
          ul.center = pt;
       }
-#endif // 0
    } [UIView commitAnimations];
 }
 
